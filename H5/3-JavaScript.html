@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript改变</title>
+
+</head>
+<style>
+    .red{
+        background: #f00;
+    }
+    .green{
+        background: #0f0;
+    }
+    .yellow{
+        background: yellow;
+    }
+</style>
+<body>
+    <div>
+        <ul>
+            <li class="item red green" value="haha" name="xxx">1号女嘉宾</li>
+            <li class="item">2号女嘉宾</li>
+            <li class="item">3号女嘉宾</li>
+            <li class="item">4号女嘉宾</li>
+            <li class="item">5号女嘉宾</li>
+            <li class="item">6号女嘉宾</li>
+            <li class="item">7号女嘉宾</li>
+            <li class="item">8号女嘉宾</li>
+        </ul>
+    </div>
+</body>
+<script>
+    (function () {
+//        返回同类名的第一个标签 通过类，ID 标签 选择器选择
+      var first_item= document.querySelector(".item");
+//      查询所有的标签集合，返回一个数组
+        var all= document.querySelectorAll(".item");
+
+        console.log("first="+first_item);
+        console.log("all="+all);
+
+//     给每个标签增加一个事件
+        for(var i=0;i<all.length;i++){
+            var li=all[i];
+//            addeventlistener 是H5中新增的方法
+            li.addEventListener("click",function () {
+//                classlist 获取标签上的所有的类选择器,通过这个可以动态控制选择器
+//               console.log(this.classList);
+                this.classList.add("red");
+                this.classList.remove("green")
+                this.classList.toggle("yellow");
+            });
+        }
+    })();
+</script>
+</html>

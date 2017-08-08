@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多媒体标签</title>
+</head>
+
+<body>
+<!--audio 标签搞定播放，如果没有controls，就不会有控制块-->
+<!--<audio src="music/穿越大英雄.mp3" controls="controls"></audio>-->
+
+<!-- 自定义播放音频标签audio -->
+<audio src="music/穿越大英雄.mp3" id="audio"></audio>
+<button id="play">播放</button>
+<button id="pause">暂停</button>
+<p></p>
+<!--
+1、视频格式支持问题
+2、视频版权问题，所以有写法2
+3、poster 视频播放前的显示帧
+-->
+<!--<video src="video/start.mp4" controls="controls"></video>-->
+<video controls="controls" poster="images/1.jpg" autoplay="autoplay" muted="muted" loop="loop">
+    <source src="video/mov_bbb.ogg" type="video/ogg">
+    <track src="music/1.txt">
+    <p>浏览器版本不支持</p>
+</video>
+</body>
+<!--script放在body后面，当加载完成网页后，就加载script，省去了写onload 函数-->
+<script>
+    var audio = document.getElementById("audio");
+    var play = document.getElementById("play");
+    play.addEventListener("click", function () {
+        audio.play();
+    });
+    var pause = document.getElementById("pause");
+    pause.addEventListener("click", function () {
+        audio.pause();
+    });
+</script>
+</html>

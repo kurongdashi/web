@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    aside {
+        float: left;
+        /*百分比是从父控件中获取的，必须给父控件设置*/
+        height: 100%;
+        width: 220px;
+        background: #ccc;
+    }
+
+    aside li {
+        font-size: 20px;
+        line-height: 2em;
+        cursor: pointer;
+        background: yellow;
+
+    }
+
+    article {
+        margin-left: 220px;
+        padding: 20px;
+        height: 100%;
+        background: #fcfefe;
+        overflow: scroll;
+    }
+</style>
+<body>
+<aside>
+    <ul id="list">
+    </ul>
+</aside>
+<article>
+    <p id="content"></p>
+</article>
+</body>
+<script>
+    var data = [{"title": "五环之歌", "des": "五环之歌"}, {"title": "酱油哥", "des": "酱油哥"}, {"title": "毛线哥", "des": "毛线哥"}];
+    (function () {
+//        根据id 查询
+        var ul = document.querySelector("#list");
+        for (var i = 0; i < data.length; i++) {
+
+            var li = document.createElement("li");
+            li.innerHTML = data[i].title;
+            li.setAttribute("data-des",data[i].des)
+            ul.appendChild(li);
+        }
+//        selectorAll
+        var lis = document.querySelectorAll("#list>li");
+
+        var p = document.querySelector("#content");
+
+        for (var i = 0; i < lis.length; i++) {
+            var item = lis[i];
+            item.addEventListener("click", function () {
+                var des=this.dataset.des;
+                p.innerHTML = des;
+//              判断浏览器是否支持历史记录
+                if (window.history && history.pushState){
+//                    向浏览器中添加一条历史记录
+//                    参数 ：历史记录名 ，  ，
+                    history.pushState(des,"","?t="+des);
+
+                }else{
+                    console.log("不支持")
+                }
+            });
+        }
+//        浏览器返回键被点击
+        window.addEventListener("popstate",function (e) {
+            console.log(e);
+            p.innerHTML = e.state;
+//            第一次请求获取地址栏地址
+            var path=window.location.search.split("=")[1];
+            if (path){
+                console.log(decodeURI(path));
+            }
+        });
+//
+
+
+    })();
+</script>
+</html>

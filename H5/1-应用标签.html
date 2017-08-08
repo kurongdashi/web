@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>应用标签</title>
+</head>
+<style>
+.progress{
+
+}
+</style>
+<body>
+<div>
+<!--进度条-->
+<progress value="10" max="100" class="progress"></progress>
+
+<label>请输入：<input type="text"></label>
+<!-- 存放对象的属性 li 标签的 data     -->
+</div>
+<div>
+    <ul id="ul">
+    </ul>
+</div>
+
+<!--h5中的输入框 :主要用于移动手机开发 -->
+<div>
+    <input type="range" name="" id="" min="0" max="100" step="1">
+    <input type="email">
+    <input type="tel">
+    <input type="number">
+    <input type="url">
+
+</div>
+
+</body>
+<script>
+    var data=[{"name":"张三丰","age":20},{"name":"张无忌","age":20}];
+   var ul= document.getElementById("ul");
+    for(var a=0;a<data.length;a++){
+        var item=data[a];
+        var li=document.createElement("li");
+        li.innerHTML=item.name;
+//        h5中新增加的属性data- 专门用来存放对象的属性
+        li.setAttribute("data-age",item.age);
+        ul.appendChild(li);
+        li.addEventListener("click",function () {
+            console.log(li.dataset);
+        });
+    }
+</script>
+</html>
