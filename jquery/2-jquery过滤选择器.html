@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="jquery-3.1.1.js"></script>
+    <script type="text/javascript">
+// 这个等价于onload() 函数 但是他比onload执行提前了，在body里标签加载完成后就执行了，并没有等标签引用的资源
+// 加载完成后引用
+    $(document).ready(function () {
+//        过滤选择器，都是过滤一个集合中的标签
+//      1、  odd 奇数 even 偶数
+        $("li:odd").css("background","#fe0000");
+        $("li:even").css("background","#00f");
+//      2、  序号过滤，序号从0开始
+        $("li:eq(5)").css(
+            "background","gold",
+            "font-size","22px"
+        );
+//        小于
+        $("li:lt(4)")
+//        大于
+        $("li:gt(4)")
+
+//        3、属性选择器
+        $("li[class]").css("font-size","22px");
+//        4、以什么开头
+        $("li[class^='b']").css("font-size","33px");
+//        5、以什么结尾
+        $("li[classS='c']").css("font-size","33px");
+//        6、包涵
+        $("li[class*='d']").css("font-size","55px");
+//        7 、其他 = 前面可以是 ！
+    });
+    </script>
+</head>
+<body>
+<ul>
+    <li class="aa">1号男嘉宾</li>
+    <li class="bb">2号男嘉宾</li>
+    <li class="bc">3号男嘉宾</li>
+    <li class="abcd">4号男嘉宾</li>
+    <li>5号男嘉宾</li>
+    <li>6号男嘉宾</li>
+    <li>7号男嘉宾</li>
+    <li>8号男嘉宾</li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>旋转轮播图</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .slide {
+        width: 1200px;
+        height: 500px;
+        border: 1px solid red;
+        margin: 200px auto;
+        position: relative;
+    }
+
+    ul {
+        list-style: none;
+        position: relative;
+    }
+
+    ul li {
+        position: absolute;
+    }
+
+    ul li img {
+        width: 100%;
+    }
+
+    .slide .prev, .next {
+        width: 76px;
+        height: 112px;
+        position: absolute;
+        top: 50%;
+        margin-top: -56px;
+        background: url(img/prev.png) no-repeat;
+        z-index: 99;
+    }
+
+    .next {
+        right: 0;
+        background: url(img/next.png) no-repeat;
+    }
+</style>
+<body>
+
+<div class="slide">
+    <ul>
+        <li><img src="img/1.png" alt=""></li>
+        <li><img src="img/2.png" alt=""></li>
+        <li><img src="img/3.png" alt=""></li>
+        <li><img src="img/4.png" alt=""></li>
+        <li><img src="img/4.png" alt=""></li>
+    </ul>
+
+    <div class="arrow" id="arrow">
+        <a href="javascript:;" class="prev"></a>
+        <a href="javascript:;" class="next"></a>
+    </div>
+</div>
+</body>
+<script src="jquery-3.1.1.js"></script>
+<script>
+    $(function () {
+        var json = [
+//        图片1
+            {width: 400, top: 20, left: 140, opacity: 0.5, z: 2},
+            {width: 500, top: 100, left: 0, opacity: 0.8, z: 3},
+            {width: 560, top: 150, left: 300, opacity: 1, z: 40},
+            {width: 500, top: 100, left: 640, opacity: 0.8, z: 3},
+            {width: 400, top: 20, left: 600, opacity: 0.5, z: 2}
+        ];
+        change();
+//        每次等动画执行完成后才可以继续点击执行，增加一个控制
+        var go = true;
+        $(".arrow").children().on("click", function () {
+            if (go) {
+                go=false;
+                if (this.className == "prev") {
+//                向左走，将json中的第一个移除，添加到json最后一个
+                    change(false);
+
+                } else {
+//                向右走将json中的最后一个移除，添加到第一个
+                    change(true);
+                }
+
+            }
+        });
+
+        function change(flag) {
+            if (flag) {
+//                json的unshift() 添加到第一个位置
+//                pop() 移除最后一个
+
+                json.unshift(json.pop())
+            } else {
+
+                json.push(json.shift());
+            }
+            var lis = $("li");
+            $.each(lis, function (i, item) {
+                var item = $(item);
+                item.animate({
+                    "width": json[i].width + "px",
+                    "top": json[i].top + "px",
+                    "left": json[i].left + "px",
+                    "opacity": json[i].opacity,
+                    "zIndex": json[i].z,
+
+                }, function () {
+                    go=true;
+                });
+            })
+        }
+
+
+    });
+</script>
+</html>

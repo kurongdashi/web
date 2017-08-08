@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绘制优化</title>
+</head>
+<body>
+<canvas width="400" height="400" id="cav"></canvas>
+</body>
+<script src="sprite.js"></script>
+<script>
+    (function () {
+//        canvas1 为用户可见画布
+        var canvas1=document.getElementById("cav")
+        canvas1.style.border="1px solid #333";
+        var ctx1=canvas1.getContext("2d");
+
+//        canvas优化方式：将要最终显示的一次绘制到用户界面，其他中间过程中绘制的全部在内存中另一个canvas中进行，这样
+//        有利于显卡的开销，节省性能
+
+
+//        canvas2 为内存画布
+        var canvas2=document.createElement("canvas");
+        canvas2.width=canvas1.width;
+        canvas2.height=canvas1.height;
+        var ctx2=canvas2.getContext("2d");
+
+
+    for (var i=0;i<10;i++){
+        var rx=Math.random()*100;
+        var ry=Math.random()*100;
+        var rect=new sprite({
+            x:rx,
+            y:ry,
+            w:100,
+            h:100,
+            color:"blue",
+            alpha:1,
+            scaleX:1,
+            scaleY:1,
+            fillColor:"green",
+            rotate: 0
+        });
+        rect.draw(ctx2);
+    }
+//    将canvas2直接绘制到canvas1中
+        ctx1.drawImage(canvas2,0,0);
+
+    }());
+</script>
+</html>

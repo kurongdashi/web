@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>居中</title>
+	<style type="text/css">
+		/*
+		1、margin: 0 auto; 使用原理
+			margin: 0 auto; auto自动向左向右margin
+			 ==>==>
+			margin-left: 0 auto;
+			margin-right: 0 auto;
+	2、注意：
+	1)必须对象是盒子，而且要有width
+	2) 必须在标准流中
+	2、margin表达的是兄弟之间的距离，表达父子之间的距离用padding
+		padding-top: 50px;
+		*/
+.box1{
+	width: 400px;
+	height: 350px;
+	border:1px solid white;
+	background-color: green;
+	margin: 0 auto;
+	padding-top: 50px;
+	/*这个只能把文本内容水平居中*/
+	text-align: center;
+}
+.box1 .p{
+	width: 200px;
+	height: 100px;
+	/*单行文本：当文本的行高和height一样时，文字垂直居中了*/
+	line-height: 100px;
+	
+	background-color: orange;
+}
+/*多行文本：当文本有多行时需要使用padding,并且需要计算padding  
+ 盒子高度=盒子原始高度-padding-top高度
+ padding-top高度=(盒子原始高度-line-height高度*line)/2 
+
+ */
+.p1{
+	width: 200px;
+	height: 120px;
+	line-height: 20px;
+	padding-top: 80px;
+	background-color: orange;
+}
+
+	</style>
+</head>
+<body>
+<div class="box1">
+爱的发声大时代发生
+	<p class="p">爱的发声大时代发生啊的说法</p>
+</div>
+<p class="p1">爱的发声大时代发生啊的说法</p>
+
+	
+</body>
+</html>

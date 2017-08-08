@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<books>
+    <book>
+        <title>三国演义</title>
+        <des>文学经典</des>
+        <price>20</price>
+    </book>
+    <book>
+        <title>三国演义2</title>
+        <des>文学经典2</des>
+        <price>202</price>
+    </book>
+</books>

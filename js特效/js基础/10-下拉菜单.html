@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下拉菜单</title>
+</head>
+<script>
+    window.onload=function () {
+        var sel=document.getElementById("country");
+        sel.onchange=function () {
+            alert(this.value)
+        }
+    }
+</script>
+<body>
+<select id="country">
+    <option value="1">中国</option>
+    <option value="2">美国</option>
+    <option value="3">日本</option>
+    <option value="4">韩国</option>
+</select>
+</body>
+</html>

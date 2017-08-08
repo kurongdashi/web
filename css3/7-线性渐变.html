@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>背景图的渐变</title>
+</head>
+<style>
+    body{
+        background: #e1e1e1;
+    }
+.box1{
+    width:1000px;
+    margin:100px auto;
+
+}
+.box1 .item{
+    float: left;
+    display: flex;
+    margin-right:30px;
+    margin-bottom: 30px;
+    width:200px;
+    height:200px;
+    background: #fff;
+    padding:10px;
+    box-shadow:3px 2px 6px #333333 ;
+
+}
+    /*  渲染角度0-360 从下左上右 ，顺时针方向从下开始*/
+    .item:nth-child(1) .gradient{
+        margin:auto;
+        width:180px;
+        height:30px;
+        /* 默认角度180 从上到下渲染*/
+        background-image: linear-gradient(red,gold);
+    }
+    .item:nth-child(2) .gradient{
+        margin:auto;
+        width:180px;
+        height:30px;
+        background-image: linear-gradient( 0,red,gold);
+    }
+    .item:nth-child(3) .gradient{
+        margin:auto;
+        width:180px;
+        height:30px;
+        background-image: linear-gradient( 90deg,red,gold);
+    }
+    .item:nth-child(4) .gradient{
+        margin:auto;
+        width:180px;
+        height:30px;
+        background-image: linear-gradient( 180deg,red,gold);
+    }
+    .item:nth-child(5) .gradient{
+        margin:auto;
+        width:180px;
+        height:30px;
+        /*to left 表示从右边到左边*/
+        background-image: linear-gradient( to left,red,gold);
+    }
+    .item:nth-child(6) .gradient{
+        margin:auto;
+        width:180px;
+        height:30px;
+        /*to left 表示从右边到左边  */
+        background-image: linear-gradient( to left,red 40%,gold 50%);
+    }
+    .item:nth-child(7) .gradient{
+        margin:auto;
+        width:180px;
+        height:30px;
+        /*to left 表示从右边到左边  */
+        background-image: linear-gradient( to left top,red ,gold );
+    }
+    .item:nth-child(8) .gradient{
+        margin:auto;
+        width:180px;
+        height:30px;
+        /*to left 表示从右边到左边  */
+        background-image: linear-gradient( 135deg,red ,gold);
+    }
+</style>
+<body>
+    <div class="box1">
+
+        <div class="item">
+            <div class="gradient"></div>
+        </div>
+        <div class="item">
+            <div class="gradient"></div>
+        </div>
+        <div class="item">
+            <div class="gradient"></div>
+        </div>
+        <div class="item">
+            <div class="gradient"></div>
+        </div>
+        <div class="item">
+            <div class="gradient"></div>
+        </div>
+        <div class="item">
+            <div class="gradient"></div>
+        </div>
+        <div class="item">
+            <div class="gradient"></div>
+        </div>
+        <div class="item">
+            <div class="gradient"></div>
+        </div>
+        <div class="item">
+            <div class="gradient"></div>
+        </div>
+        <div class="item">
+            <div class="gradient"></div>
+        </div>
+        <div class="item">
+            <div class="gradient"></div>
+        </div>
+        <div class="item">
+            <div class="gradient"></div>
+        </div>
+
+
+
+    </div>
+</body>
+</html>

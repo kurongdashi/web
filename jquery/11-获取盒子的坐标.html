@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>盒子的坐标值</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        div{
+            position: relative;
+        }
+        p{
+            position: absolute;
+            left: 20px;
+            top: 20px;
+        }
+
+
+    </style>
+</head>
+<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("div").css({
+            "background-color": "red",
+            "height": "300px"
+        });
+//        获取
+        $("button").eq(0).click(function () {
+            var top=$("div").offset().top;
+            var left=$("div").offset().left;
+            var top1=$("div").position().top;
+            var left1=$("div").position().left;
+            console.log("top="+top+":left="+left);
+            console.log("top1="+top1+":left1="+left1);
+        });
+
+        $("button").eq(1).click(function () {
+//          获取p元素的坐标
+            var top=$("p").offset().top;
+            var left=$("p").offset().left;
+//          获取p元素相对父盒子的坐标
+            var top1=$("p").position().top;
+            var left1=$("p").position().left;
+            console.log("top="+top+":left="+left);
+            console.log("top1="+top1+":left1="+left1);
+        });
+        $("button").eq(2).click(function () {
+            var top=$("input:eq(0)").val();
+            var left=$("input:eq(1)").val();
+            console.log("top="+top+":left="+left);
+//            设置offset 和设置CSS一样方式
+            $("div").offset({
+                "top":top,
+                "left":left
+            })
+        });
+
+    });
+</script>
+<body>
+<button>获取坐标</button>
+<button>获取相对父盒子的位置</button>
+<button>设置offset</button>
+Top:<input type="text">
+left:<input type="text">
+<div class="d">
+    <p>我是段落</p>
+</div>
+</body>
+</html>

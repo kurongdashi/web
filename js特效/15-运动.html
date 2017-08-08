@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>缓动</title>
+</head>
+<style>
+    #box{
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        background-color: pink;
+        left:400px;
+    }
+</style>
+<body>
+    <button id="btn">缓动</button>
+<div id="box"></div>
+</body>
+<script>
+    window.onload=function () {
+        var btn=document.getElementById("btn")
+        var box=document.getElementById("box")
+        var target=200;
+        var t=null;
+        btn.onclick=function () {
+            t=setInterval(function () {
+//                目标位置-当前位置
+                var step=(target-box.offsetLeft)/10;
+//                如果之间的步长为 小数了需要取整，否则无法运动到目标位置，因为下一步会将btn.style.left变成小数
+//                取整，如果步长为正数就向上取，否则向下取
+                 step=step>0?Math.ceil(step):Math.floor(step);
+
+                box.style.left=box.offsetLeft+step+"px";
+                if(box.offsetLeft==target){
+                    clearInterval(t);
+//                    jQuery 动画封装的原理，因为[]语法可以传递参数，但是style只能获取行内的样式
+                    alert("使用box.style['left']="+box.style["left"]) ;
+
+                }
+
+            },30)
+
+        }
+
+    }
+
+// -------------------------------------------------
+    <!--四舍五入-->
+    console.log(Math.round(1.7));
+//    向上取整结果为2
+    console.log(Math.ceil(1.3));
+//    向下取整结果为1
+    console.log(Math.floor(1.3));
+</script>
+</html>

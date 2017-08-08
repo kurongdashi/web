@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>标准文档流</title>
+<style type="text/css">
+/*
+标准文档流：
+1、空白折叠
+2、底部对齐
+3、元素分级
+1、块级元素
+ a.每一个标签单独占一行
+ b.可以设置宽高
+ c.如果不设置，默认为父控件的宽高
+2、行内元素
+a.不能设置宽高，默认宽度是文字的宽度
+b.与其他标签在同一行
+
+HTML标签分类：
+文本级：p span a i b u em (除了p其他都是行内级)
+容器级：div li dt dd h (容器级别的都是块级元素包括p标签也是块级)
+
+3、块和行内元素转换
+
+在标准流中使用下面语句可以相互转换 
+display:inline;
+dispaly:block;
+*/
+/*
+在标准流中使用下面语句可以相互转换 */
+div{
+	display: inline;
+	width: 200px;
+	height: 200px;
+	background-color: pink;
+
+}
+/*
+在标准流中使用下面语句可以相互转换 */
+span{
+	display: block;
+	width: 200px;
+	height: 200px;
+	background-color: pink;
+}
+/*
+在标准流中使用下面语句可以相互转换 */
+a{
+	display: block;
+	width: 150px;
+	height: 120px;
+	background: red;
+
+}
+</style>
+</head>
+<body>
+<div>我是一个div</div>
+<span>我是一个span1</span>
+<span>我是一个span2</span>
+<a href="http://www.baidu.com">点击去百度</a>
+	
+</body>
+</html>
+
+
+
+
+

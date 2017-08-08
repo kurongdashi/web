@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>封装运动函数</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .box1{
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+    }
+</style>
+<body>
+<button id="btn200">200</button>
+<button id="btn400">400</button>
+<div class="box1" id="dd"></div>
+</body>
+<script>
+    window.onload=function () {
+       var box=document.getElementById("dd");
+        var btn200=document.getElementById("btn200");
+        var btn400=document.getElementById("btn400");
+    btn200.onclick=function () {
+        animation(box,200)
+    }
+        btn400.onclick=function () {
+            animation(box,400)
+        }
+
+//        单向运动
+    function animate(obj,target) {
+            obj.timer=setInterval(function () {
+                if(obj.offsetLeft>target){
+                    clearInterval(obj.timer);
+                }
+                obj.style.left=obj.offsetLeft+10+"px";
+
+            },30)
+
+        }
+//        双向移动的
+        function animation(obj,target) {
+//            根据输入的位置和当前位置来判断速度正负
+           var speed=obj.offsetLeft>target?-5:5;
+           if(obj.offsetLeft==target)
+               speed=0;
+            obj.timer=setInterval(function () {
+                var result=obj.offsetLeft-target;
+                obj.style.left=obj.offsetLeft+speed+"px";
+
+                if(Math.abs(result)<=5){
+//                    当前位置和目标位置差距小于等于5时，清除定时
+                    clearInterval(obj.timer);
+//                    直接定位到目标位置
+                    obj.style.left=target;
+                }
+
+            },30)
+
+
+
+        }
+
+
+    }
+</script>
+</html>

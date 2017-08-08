@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组增删元素</title>
+</head>
+
+<script>
+    var a=[1,2,3,4];
+//    1 push:往后面添加元素，返回元素的总个数（数组的长度）
+    console.log(a.push(11));
+    console.log(a);
+//    2 unshift:从前面添加元素
+    console.log(a.unshift(24));
+    console.log(a);
+//    3 pop:移除最后一个元素，并返回
+    console.log(a.pop())
+    console.log(a);
+//    4 shift:移除第一个元素，并返回
+    console.log(a.shift())
+    console.log(a);
+//    5 concat 连接两个数组返回生成的新数组
+    var b=[5,6,7,8];
+    console.log(a.concat(b));
+//   6 join:数组转换字符串
+    console.log(b.join("^"));
+//    7 字符串转数组
+    console.log("nihaoya".split(""));
+
+</script>
+<body>
+
+</body>
+</html>

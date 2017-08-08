@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>天气案例</title>
+</head>
+<body>
+    <button id="btn">查询天气</button>
+<div id="show"></div>
+</body>
+<script src="jquery-3.1.1.js"></script>
+<script>
+    $(function () {
+        $("#btn").on("click",function () {
+           $.ajax({
+//               百度提供的天气查询  此处返回的是数据，不是js调用脚本函数，无法使用jsonp类型ajax
+//               http://apistore.baidu.com/microservice/weather?cityCode=北京
+               url:"weather.php",
+               type:"get",
+               dataType:"json",
+               success:function (data) {
+                    console.log(data);
+               },error:function (e) {
+
+               }
+           })
+        });
+    });
+</script>
+</html>

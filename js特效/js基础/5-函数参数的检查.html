@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>参数检测</title>
+</head>
+<script>
+
+    function add(a,b,c,d) {
+        console.log(add.length);//函数形参个数
+        console.log(arguments);//函数传过来的实参的数组
+        if(arguments.length==4){
+            return a+b+c+d;
+        }else{
+            return "参数个数不匹配";
+        }
+
+    }
+    var a=add(1,2);
+    console.log(a);
+</script>
+<body>
+
+</body>
+</html>

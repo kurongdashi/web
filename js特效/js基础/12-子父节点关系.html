@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>子父节点关系</title>
+</head>
+<style>
+    ul{
+        list-style: none;
+    }
+    li{
+        min-height:10px;
+    }
+</style>
+<script>
+    // sibling :兄弟
+    window.onload=function () {
+        var test=document.getElementById("test");
+        var fu=document.getElementById("fu");
+//        1 获取下一个兄弟节点
+        var next= test.nextElementSibling||test.nextSibling;
+        next.style.backgroundColor="red";
+//        2 获取上一个兄弟
+        var prev=test.previousElementSibling;
+        prev.style.backgroundColor="green";
+//        3 父获取子
+//        获取第一个子
+        fu.firstElementChild.style.backgroundColor="green";
+//        获取最后一个子
+        fu.lastElementChild.style.backgroundColor="green";
+//        获取全部子,注意有些浏览器包括空格换行，也是子节点
+        var childs=fu.childNodes;
+        for(var i=0;i<childs.length;i++){
+//            根据nodetype
+            if(childs[i].nodeType==1){
+            childs[i].style.backgroundColor="gold";
+            }
+        }
+
+//        4 子获取父
+        var ul=test.parentNode;
+        ul.style.backgroundColor="yellow";
+    }
+</script>
+<body>
+<ul id="fu">
+<li>选择</li>
+<li >选择</li>
+<li>选择</li>
+<li>选择</li>
+<li id="test">选择</li>
+<li>选择</li>
+<li>选择</li>
+<li>选择</li>
+</ul>
+</body>
+</html>

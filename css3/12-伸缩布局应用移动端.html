@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>伸缩布局在移动端的应用</title>
+</head>
+<style>
+
+    <!-- 导航条自适应,适配各种屏幕的手机-->
+    .box{
+        width:800px;
+    }
+    .box ul{
+        list-style: none;
+        display: flex;
+    }
+    .box ul li{
+        height:40px;
+        text-align: center;
+        line-height:40px;
+        flex:1;
+        background: pink;
+    }
+
+    /*----------------*/
+    .box1{
+        width:400px;
+        height:600px;
+        display: flex;
+        /*设置子元素纵向排列*/
+        flex-direction: column;
+
+    }
+    .box1 .header{
+        height: 50px;
+        background: red;
+    }
+    .box1 .content{
+        background: green;
+        display: flex;
+        flex:1;
+    }
+    .box1 .content .left{
+        flex:1;
+        background: yellow;
+    }
+    .box1 .content .right{
+        flex:2;
+        background: purple;
+    }
+    .box1 .footer{
+        height:50px;
+        background: blue;
+    }
+/*----------底部菜单------------*/
+
+</style>
+<body>
+<div class="box">
+    <ul>
+        <li>阿里旺旺</li>
+        <li>商品分类</li>
+        <li>购物车</li>
+        <li>我的订单</li>
+    </ul>
+</div>
+<p></p>
+<div class="box1">
+    <div class="header">头部</div>
+    <div class="content">
+        <div class="left">左边内容</div>
+        <div class="right">右边内容</div>
+    </div>
+    <div class="footer">底部
+        <div class="meun">
+            <ul>
+                <li>阿里旺旺</li>
+                <li>商品分类</li>
+                <li>购物车</li>
+                <li>我的订单</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

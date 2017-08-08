@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数和变量声明问题</title>
+</head>
+<script>
+    //===============声明提升==================
+    //var 在前 function在后，function优先级大于var
+    var a;
+    function a() {
+    }
+    console.log(typeof a);//输出function
+    // function在前 var在后，function优先级大于var
+    function b() {
+    }
+    var b;
+    console.log(typeof b);//输出function，function优先级大于var，无法被覆盖
+
+    var c=1;
+    function c() {
+    }
+    console.log(typeof c);//输出number,说明先声明function后var ,然后c=1被重新赋值了
+
+    function d() {
+    }
+    var d=1;
+    console.log(typeof d);//输出number,可以说明var d=1 声明并赋值的优先级大于function
+
+    //=============函数内部变量优先使用====================
+    var aa=1;
+    f1();
+    function f1() {
+        console.log(aa);//优先使用内部变量，但是此处内部变量还未赋值
+        var aa="哈哈";
+    }
+
+</script>
+<body>
+
+</body>
+</html>

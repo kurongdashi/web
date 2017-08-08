@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动画案例2</title>
+</head>
+<style>
+    .anim{
+        width:200px;
+        height:200px;
+        background-image: url(images/green.jpg);
+
+        /* transform :改变,转换*/
+        background-size:contain;
+        background-repeat:no-repeat;
+        transition: all 2s;
+    }
+    /*
+        过渡和动画函数一起也可以组成动画
+        转换是使元素改变形状、尺寸和位置的一种效果,其实就是封装了改变盒子属性的函数，和自己手动设置盒子属性一样
+    */
+    .anim:hover{
+        /*----------2D转换-----------*/
+        /*transform: translate(500px);*/
+        /*transform:rotate(90deg);*/
+        /* 旋转中心点 //左上角*/
+        /*transform-origin: top left;*/
+
+        /*transform: scale(1.5);*/
+        /*transform: translate(500px) rotate(90deg) scale(1.5);*/
+
+
+
+        /*-----------3D转换--------*/
+        /*transform:rotateY(360deg);*/
+        /*transform: rotateX(360deg);*/
+        transform: rotateZ(360deg) rotateY(360deg) rotateX(360deg);
+
+        /*transform: rotateY(360deg) translate(100px) scale(1.5);*/
+    }
+
+</style>
+<body>
+    <div class="anim"></div>
+</body>
+</html>

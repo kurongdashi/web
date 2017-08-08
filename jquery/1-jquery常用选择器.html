@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+    .d{
+        height: 50px;
+        background-color: #f99;
+    }
+
+    </style>
+</head>
+<script type="text/javascript" src="jquery-3.1.1.js"></script>
+<script type="text/javascript">
+// jquery 的入口函数 $ 表示一个函数名 里面接受一个参数
+$(document).ready(function () {
+
+//  1、获取btn（id选择器） 设置点击事件 传人一个点击函数function
+    $("#btn").click(function () {
+    //2、获取div标签（标签选择器），隐藏
+//        $("div").hide();
+//   3、设置样式 ,如果写一个background 就获取这个样式
+//        通过标签选择器
+//    $("div").css("background","blue");
+//    4、后代选择器
+//    var b=$("div a").css("font");
+//    5、子代选择器
+//        var c=$(".d1 > a").css("font","20px");
+//    6、紧邻选择器
+//        var d=$(".d + .d1 ").css("font","20px");
+//     7、兄弟选择器
+        $(".li1 ~").css({
+//            这里面是json格式
+            "font":"22px",
+            "background":"red"
+
+        });
+
+
+
+
+    });
+});
+//
+function  fun() {
+    alert("hahahahah")
+}
+// jquery 入口函数的写法二：
+$(function () {
+    
+});
+//$====  jquery别名
+</script>
+<body>
+<input type="button" name="" value="点击" id="btn" >
+<div class="d">
+    <ul>
+        <li class="li1">我是一个li1</li>
+        <li>我是一个li2</li>
+        <li>我是一个li3</li>
+        <li>我是一个li4</li>
+        <li>我是一个li5</li>
+        <li>我是一个li6</li>
+        <li>我是一个li7</li>
+        <li>我是一个li8</li>
+    </ul>
+</div>
+
+
+</body>
+</html>

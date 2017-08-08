@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>伸缩布局-调整子元素垂直方向上</title>
+</head>
+<style>
+    .box{
+        width:1000px;
+
+    }
+    .box ul{
+        /*1、指定盒子为伸缩盒子*/
+        display: flex;
+        list-style: none;
+        /*2、指定布局方向，效果类似float*/
+        /* flex-direction: column;*/
+        /* 垂直方向排列，顺序反向*/
+        /*flex-direction: column-reverse;*/
+        flex-direction: row-reverse;
+        /*3、justify： 调整主轴（x轴） 布局中盒子间的间隔方式*/
+        /*开始方向缩进*/
+        justify-content:flex-start;
+        /*结束方向缩进*/
+        justify-content:flex-end;
+
+        justify-content:center;
+        /* 两端对齐中间平分*/
+        justify-content:space-between;
+        /*align-item*/
+        flex-wrap: wrap;
+        min-height: 800px;
+        align-items: center;
+
+    }
+    ul li{
+        margin:10px;
+        width:200px;
+        height:200px;
+        text-align: center;
+        line-height:200px;
+        background: pink;
+    }
+    ul li:nth-child(1){
+        /*控制子元素在父盒子中的y轴位置*/
+        align-self: flex-start;
+
+    }
+    /*控制子元素出现的顺序，比row-reverse 更加灵活,可以定位到每个元素*/
+    ul li:nth-child(1){
+        /*控制子元素在父盒子中的y轴位置*/
+        order:3;
+
+    }
+    ul li:nth-child(2){
+        /*控制子元素在父盒子中的y轴位置*/
+        order:2;
+
+    }
+    ul li:nth-child(3){
+        /*控制子元素在父盒子中的y轴位置*/
+        order:1;
+
+    }
+</style>
+<body>
+<div class="box">
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</div>
+</body>
+</html>

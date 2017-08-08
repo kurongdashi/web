@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>菜单选项</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu {
+            width: 390px;
+            height: 50px;
+            margin: 100px auto;
+            padding-left:10px;
+            background: #ff99cc;
+
+        }
+
+        ul {
+            list-style: none;
+        }
+        .menu li {
+            height: 50px;
+            width: 120px;
+            margin-right:10px;
+            background: #0f9;
+            float: left;
+            position: relative;
+        }
+
+        .menu li a {
+            text-decoration: none;
+            background: #0f9;
+            text-align: center;
+            width: 120px;
+            line-height: 50px;
+        }
+
+        .menu li ul {
+            position: absolute;
+            left: 0;
+            height: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<script type="text/javascript" src="jquery-3.1.1.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+//     1、 通过hover 悬停来实现传入2个fun，显示和隐藏，不带动画效果
+        /*
+         $(".menu li").hover(function () {
+         //            this 代表当前的li ,children("ul")代表li下的ul
+         $(this).children("ul").show();
+         },function () {
+         $(this).children("ul").hide();
+         });
+         */
+//      2、通过hover 悬停来实现传入1个fun，使用带动画效果的 slidetoggle
+//        $(".menu li").hover(function () {
+////        内部做了获取css样式，判断是否显示，然后操作显示
+//            $(this).children("ul").stop(true,false).slideDown(1000,"linear");
+//        },function () {
+//            $(this).children("ul").stop(true,false).slideUp(1000,"linear");
+//        });
+
+//        3、通过mouseenter来实现
+        $(".menu li").mouseenter(function () {
+            $(this).children("ul").stop();
+            $(this).children("ul").slideDown(1000);
+        });
+        $(".menu li").mouseleave(function () {
+            $(this).children("ul").stop().slideUp(1000);
+
+        });
+
+
+    });
+</script>
+<body>
+<div class="menu">
+    <ul>
+        <li>
+            <a href="#">一级菜单选项</a>
+            <ul>
+                <li>二级菜单选项1</li>
+                <li>二级菜单选项2</li>
+                <li>二级菜单选项3</li>
+                `
+            </ul>
+        </li>
+        <li>
+            <a href="#">一级菜单选项</a>
+            <ul>
+                <li>二级菜单选项1</li>
+                <li>二级菜单选项2</li>
+                <li>二级菜单选项3</li>
+                `
+            </ul>
+        </li>
+        <li>
+            <a href="#">一级菜单选项</a>
+            <ul>
+                <li>二级菜单选项1</li>
+                <li>二级菜单选项2</li>
+                <li>二级菜单选项3</li>
+                `
+            </ul>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

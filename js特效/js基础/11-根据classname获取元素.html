@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>根据classname获取元素</title>
+</head>
+<script>
+    window.onload=function () {
+        console.log(getElements("test").length)
+
+    }
+    function getElements(classname) {
+
+        if(document.getElementsByClassName){
+//            支持直接通过类名获取
+            return document.getElementsByClassName(classname)
+        }
+//        不支持
+        var arr=[];
+
+        var dom=document.getElementsByTagName("*");
+
+        for(var i=0;i<dom.length;i++){
+
+            var arr_class=dom[i].className.split(" ");
+
+            for(var j=0;j<arr_class.length;j++){
+
+                if (arr_class[j]==classname){
+                    arr.push(dom[i]);
+                }
+            }
+
+        }
+        return arr;
+    }
+</script>
+<body>
+<div class="test"></div>
+<div></div>
+<div></div>
+<div class="test dd"></div>
+<div></div>
+<div></div>
+<div class="dd test"></div>
+<div></div>
+<div></div>
+</body>
+</html>

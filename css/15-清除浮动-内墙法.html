@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style type="text/css">
+	/*
+	清除浮动之间的影响：第二组浮动的元素会追尾第一组
+	1、浮动的条件，父盒子必须要有高度
+	*/
+	*{
+		padding: 0px;
+		margin:0px;
+	}
+div{
+	/*height: 30px;*/
+}
+li{
+	 
+	 width: 50px;
+	 height: 30px;
+	background-color:yellow;
+	float:left;
+}
+/*2、clear：both；+隔墙法*/
+.box2{
+	height: 10px;
+	clear: both;
+	background-color: pink;
+}
+/*3、内墙法：在div内部在放置一个div做墙 ，如果元素float了，就不能计算高度了*/
+.box4{
+	clear: both;
+}
+.first::after{
+	content: '';
+	display: block;
+	clear: both;
+}
+.h15{
+	height: 15px;
+}
+</style>
+<body>
+	<div>
+		<ul class="first">
+			<li>吃饭</li>
+			<li>睡觉</li>
+			<li>打豆豆</li>
+		</ul>
+		<!--  这个div就是一个内墙 -->
+	</div>
+
+	<!-- <div class="box2"></div> -->
+
+	<div class="box3">
+		<ul>
+			<li>喝酒</li>
+			<li>唱歌</li>
+			<li>找妹子</li>
+		</ul>
+	</div>
+</body>
+</html>

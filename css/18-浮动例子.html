@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>浮动例子</title>
+</head>
+<style type="text/css">
+/*
+CSS写法：
+盒子从外到里一层一层的写，盒子的选择器名要写全 
+
+*/
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+	.box1{
+		width: 400px;
+		height: 100px;
+		margin:100px;
+		border:1px solid red;
+	}
+	.box1 ul{
+		list-style: none;
+	}
+	/*在需要清除浮动的父级标签上加上overflow：hidden*/
+	.box1 ul li{
+		overflow: hidden;
+		border-bottom:1px dashed gray;
+	}
+	.box1 ul li .title{
+		float: left;
+	}
+	.box1 ul li .time{
+		float: right;
+	}
+</style>
+<body>
+	<div class="box1">
+		<ul>
+			<li>
+				<span class="title">我是内容哈哈哈哈</span>
+				<span class="time">2016年12月26日</span>
+			</li>
+			<li>
+				<span class="title">我是内容哈哈哈哈</span>
+				<span class="time">2016年12月26日</span>
+			</li>
+			<li>
+				<span class="title">我是内容哈哈哈哈</span>
+				<span class="time">2016年12月26日</span>
+			</li>
+		</ul>
+	</div>
+</body>
+
+</html>

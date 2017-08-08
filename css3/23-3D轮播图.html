@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3D轮播图</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+
+    }
+
+    .box {
+        width: 560px;
+        margin: 100px auto;
+        position: relative;
+    }
+
+    ul {
+        width: 100%;
+        height: 300px;
+        list-style: none;
+        position: relative;
+        transition: transform 2s;
+        transform-style: preserve-3d;
+    }
+
+    ul li {
+        width: 100%;
+        height: 100%;
+        color: white;
+        text-align: center;
+        /*利用定位把所以的面拼在一起*/
+        position: absolute;
+    }
+
+    ul li:nth-child(1) {
+        background: url("images/1.png") no-repeat;
+        /*当同时加上translateZ时，盒子会原理旋转的轴*/
+        transform: rotateX(0deg) translateZ(150px);
+        background-size:contain;
+    }
+
+    ul li:nth-child(2) {
+
+        background: url("images/2.png") no-repeat;
+        transform: rotateX(-90deg) translateZ(150px);
+        background-size:contain;
+    }
+
+    ul li:nth-child(3) {
+
+        background: url("images/3.png") no-repeat;
+        transform: rotateX(-180deg) translateZ(150px);
+        background-size:contain;
+
+    }
+
+    ul li:nth-child(4) {
+        background: url("images/4.png") no-repeat;
+        transform: rotateX(-270deg) translateZ(150px);
+        background-size:contain;
+    }
+
+    ul:hover{
+        /*transform: rotateX(360deg) ;*/
+    }
+     span{
+        position: absolute;
+        /*display: block;*/
+        width: 20px;
+        height:20px;
+        border-top: 3px solid blue;
+        border-right: 3px solid blue;
+    }
+    span.left{
+        transform: rotate(-135deg);
+        top: 50%;
+        left:-10%;
+    }
+    span.right{
+        transform: rotate(45deg);
+        top: 50%;
+        left:100%;
+    }
+
+</style>
+<script src="jquery-3.1.1.js"></script>
+<script>
+    $(function () {
+        var num=0;
+        $(".left").on("click",function () {
+            num++;
+            $("ul").css("transform","rotateX("+num*90+"deg)")
+        });
+        $(".right").on("click",function () {
+            num--;
+            $("ul").css("transform","rotateX("+num*90+"deg)")
+        });
+
+
+    });
+</script>
+<body>
+<div class="box">
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <span class="left"></span>
+    <span class="right"></span>
+</div>
+</body>
+</html>

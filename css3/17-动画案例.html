@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动画案例</title>
+</head>
+<style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    .heart{
+        width: 400px;
+        height: 400px;
+        margin:100px auto;
+        /*background: deeppink;*/
+        position: relative;
+        transform: rotate(45deg);
+    }
+    .heart div{
+        width:200px;
+        height: 200px;
+        animation-name: jump;
+        animation-duration: 2s;
+        animation-iteration-count:infinite ;
+        /*animation-duration:alternate;*/
+        /*animation-fill-mode:forwards;*/
+    }
+
+
+    /*------------------*/
+    .heart .left{
+        position: absolute;
+        left:200px;
+        top:100px;
+        z-index: 1;
+        /*box-shadow: 3px 3px 6px red;*/
+    }
+    .heart .right{
+        /*display: none;*/
+        position: absolute;
+        top:200px;
+        z-index: 3;
+        left:100px;
+    }
+    .heart .bottom{
+        /*display: none;*/
+        position: absolute;
+        left:200px;
+        top:200px;
+        background: #D5093C;
+    }
+    /*左边radius*/
+    .radius{
+        border-radius: 50%;
+    }
+    .gradient{
+        background-image: radial-gradient(200px at 10px 30px ,#f00 ,#D5093C);
+    }
+    @keyframes jump {
+        0%{
+            transform: scale(1);
+            box-shadow:0 0 40px #d5093c;
+
+        }
+        50%{
+            transform: scale(1.1);
+            box-shadow:0 0 70px #d5093c;
+
+        }
+        100%{
+              transform: scale(1);
+            box-shadow:0 0 40px #d5093c;
+
+        }
+
+    }
+
+</style>
+<body>
+<div class="heart">
+    <div class="left radius gradient">左1</div>
+    <div class="right radius gradient">右2</div>
+    <div class="bottom">底3</div>
+</div>
+</body>
+</html>

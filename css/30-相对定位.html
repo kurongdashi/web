@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>相对定位</title>
+</head>
+<style type="text/css">
+div{
+	width: 200px;
+	height: 200px;
+}
+.d1{
+	background-color: red;
+}
+/*相对定位 relative 
+	1、位置没有移动，只是把图像渲染到相对自身某个位置
+	2、用法，做盒子的微型调整，调整距离小
+
+*/
+.d2{
+	position: relative;
+	background-color: green;
+	/*相对原来top加100*/
+	top:100px;
+	/*相对原来的left加100*/
+	left: 100px;
+}
+.d3{
+	margin:300px;
+	background-color: blue;
+	position: relative;
+	/*相对原来右向左加100*/
+	right: 100px;
+	/*相对原来底边加100*/
+	bottom: 100px;
+}
+
+
+</style>
+<body>
+	<div class="d1"></div>
+	<div class="d2"></div>
+	<div class="d3"></div>
+</body>
+</html>

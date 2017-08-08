@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文档滚动</title>
+</head>
+<style>
+    body{
+        height: 3000px;
+    }
+</style>
+<body>
+
+</body>
+<script>
+    function scrollTop() {
+//        支持 ie9 和其他浏览器
+        if(window.pageYOffset!=null){
+            return {
+                left:window.pageXOffset,
+                top:window.pageYOffset
+            }
+        }
+//        检查是否有声明 <!DOCTYPE html>
+        else if(document.compatMode=="CSS1Compat"){
+            return {
+                left:document.documentElement.scrollLeft,
+                top:document.documentElement.scrollTop
+
+            }
+        }
+//        没有声明 怪异模式的浏览器
+        return {
+            left:document.body.scrollLeft,
+            top:document.body.scrollTop
+        }
+    }
+    console.log("scroll="+scrollTop().top)
+</script>
+</html>

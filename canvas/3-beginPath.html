@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>beginPath</title>
+</head>
+<body>
+<canvas id="cav" width="500" height="500"></canvas>
+</body>
+<script>
+    (function () {
+        var canvas=document.getElementById("cav")
+        var ctx=canvas.getContext("2d");
+        ctx.strokeStyle="red";
+        ctx.lineWidth=5;
+//        第一条线
+        ctx.moveTo(100,100);
+        ctx.lineTo(400,100)
+        ctx.stroke();
+//        绘制多条不同线时，默认每次绘制都是继承上次绘制时设置的属性，如果更改这次绘制的属性也会影响上次绘制的，
+//        需要重新开启一个状态,必须先绘制完前一个
+        ctx.beginPath();
+//         第二条线
+        ctx.strokeStyle="purple";
+        ctx.moveTo(100,200);
+        ctx.lineTo(400,200)
+        ctx.stroke();
+        ctx.beginPath();
+//         第二条线
+        ctx.strokeStyle="green";
+        ctx.moveTo(100,300);
+        ctx.lineTo(400,300)
+
+
+
+        ctx.stroke();
+
+    }());
+</script>
+</html>

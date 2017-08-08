@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案例1</title>
+</head>
+<body>
+<div id="container"></div>
+</body>
+<script src="libs/konva/konva.js"></script>
+<script src="circle.js"></script>
+<script>
+    var stage=new Konva.Stage({
+        container:"container",
+        width:window.innerWidth,
+        height:window.innerHeight
+    });
+    var layer=new Konva.Layer();
+    stage.add(layer);
+//    舞台中心点坐标
+    var ceX=stage.width()/2;
+    var ceY=stage.height()/2;
+
+//    画虚线
+    var dash1_r=120;
+    var dash2_r=200;
+
+    function dashCircle(r) {
+        var dash=new Konva.Circle({
+            x:ceX,
+            y:ceY,
+            radius:r,
+            stroke:"blue",
+            dash:[10,4],//实线10，间隔4
+            strokeWidth:4
+
+        });
+        return dash
+    }
+
+    layer.add(dashCircle(dash1_r));
+    layer.add(dashCircle(dash2_r));
+
+
+//  绘制外环上的圆形,和中心圆的角度
+    var dash1_corner_1=-45;
+    var dash1_corner_2=135;
+
+    var dash2_corner_1=-90;
+    var dash2_corner_2=90;
+    var dash2_corner_3=0;
+    var dash2_corner_4=180;
+
+
+    /*外环圆组的位置，相对中心圆的角度，和相对中心圆圆心的距离*/
+    function position(corner,r) {
+        var x= Math.cos(corner*Math.PI/180)*r;
+        var y=  Math.sin(corner*Math.PI/180)*r;
+        return {
+            x:x,
+            y:y
+        }
+    }
+//  中心圆
+    var center_c=new CircleText({
+        x:ceX,
+        y:ceY,
+        text:"深圳中心",
+        innerRadius:50,
+        outerRadius:70
+    })
+    center_c.addGrounp(layer);
+
+    var anim_grounp1=new Konva.Group({
+        x:ceX,
+        y:ceY
+    })
+//    绘制虚线上的一组圆
+    function dash_circle(layer,conner,r,text,innerFill,innerRadius,outerRadius) {
+        var p=position(conner,r);
+        var ct=new CircleText({
+            x:p.x,
+            y:p.y,
+            text:text,
+            innerFill:innerFill,
+            innerRadius:innerRadius||30,
+            outerRadius:outerRadius||40
+        })
+        ct.addGrounp(layer);
+    }
+//    创建一个动画层
+    var animLayer1 =new Konva.Layer({
+        x:ceX,
+        y:ceY
+    });
+    stage.add(animLayer1 );
+    //    创建一个动画层
+    var animLayer2 =new Konva.Layer({
+        x:ceX,
+        y:ceY
+    });
+    stage.add(animLayer2 );
+
+
+//  绘制虚线上的一组圆1
+   dash_circle(animLayer1,dash1_corner_1,dash1_r,"龙华","orange");
+    dash_circle(animLayer1,dash1_corner_2,dash1_r,"宝安","green" );
+//
+    dash_circle(animLayer2 ,dash2_corner_1,dash2_r,"南山","red" );
+    dash_circle(animLayer2 ,dash2_corner_2,dash2_r,"罗湖","gold" );
+    dash_circle(animLayer2 ,dash2_corner_3,dash2_r,"龙岗","red" );
+    dash_circle(animLayer2 ,dash2_corner_4,dash2_r,"光明","gold");
+
+
+    animLayer1.draw();
+    animLayer2.draw();
+    layer.draw();
+    var con=40;
+    animLayer1.on("mouseover",function () {
+        con=20;
+    })
+    animLayer1.on("mouseout",function () {
+        con=40;
+    })
+    animate(animLayer1);
+    animate(animLayer2);
+
+
+
+// 动画系统
+    function animate(layer) {
+        var anim=new Konva.Animation(function (f) {
+//            f是上一次执行此方法到现在的时间差，单位ms
+            var a=con*f.timeDiff/1000;
+            layer.rotate(a);
+//            让子盒子反向旋转以抵消父盒子正向旋转所引起的视觉差
+            layer.getChildren().each(function (item,i) {
+                item.rotate(-a);
+
+            })
+        },layer);
+        anim.start();
+    }
+
+
+</script>
+</html>

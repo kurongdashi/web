@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绘制表格</title>
+</head>
+<body>
+<canvas id="cav" width="500" height="500"></canvas>
+</body>
+<script>
+    window.onload=function () {
+        var canvas=document.getElementById("cav")
+        var ctx=canvas.getContext("2d")
+       var tabH=20;
+        var tabW=20;
+        ctx.lineWidth=0.5;
+        ctx.strokeStyle="#00f";
+        for(i=0;i<=canvas.width/tabW;i++){
+//            绘制横线
+            ctx.moveTo(0,i*tabH);
+            ctx.lineTo(canvas.width,i*tabH);
+//            绘制竖线
+            ctx.moveTo(i*tabW,0);
+            ctx.lineTo(i*tabH,canvas.height);
+        }
+        ctx.stroke();
+
+    }
+</script>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>function的理解</title>
+</head>
+<body>
+
+</body>
+<script>
+    /*
+     1、javascript 的执行分为2个阶段
+         1、预解析，声明提升，把所有function声明的函数提前，然后var 声明的定义提前；
+         2、执行阶段，从上往下走
+
+     2、函数里面的函数引用函数变量，可以延长函数变量的生命周期
+
+     3、javascript的作用域，函数的和全局的for()里面的也是全局的,没有块作用域
+     4、函数本身，可以作为构造函数，也可以是对象
+     5、闭包：一个函数使用另一个函数的内部变量，使用方式是把一个函数从另一个函数内部return返回，使用闭包目的是为了减少全局变量，和其他变量的使用
+      */
+
+//==========面试题1，javascript函数的定义=========
+    a();
+    function a() {
+        console.log("a");
+    }
+    b();
+   var b= function () {
+        console.log("b");
+    }
+    //==========面试题2，闭包的使用=========
+    function f1() {
+        var n=1;
+        var f2=function f() {
+            n++;
+            console.log("内部函数n="+n);
+        }
+        console.log("函数n="+n);
+        return f2;
+    }
+//    因为f3一直引用着n所以，n的生命周期延长了
+var f3=f1();
+    f3();
+    f3();
+    f3();
+
+
+    //==========面试题3,for里面的变量竟然是全局变量=========
+    var data=[];
+//   for里面的i是全局的 所以for运行完后i=3,当调用后console里输出的i一直为3
+   for (var i=0;i<3;i++){
+        data[i]=function () {
+            console.log(i);
+        }
+   }
+data[0]();
+data[1]();
+data[2]();
+//验证for()里面的i还是存在的
+console.log("javascript中当前执行完for后里面的i="+i);
+//------------函数立即执行必须赋值才能理解执行------------------
+var aa=function () {
+    console.log("a+b="+1+2);
+}();
+</script>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background: #e1e1e1;
+    }
+
+    .box1 {
+        width: 1000px;
+        /*height: 500px;*/
+        margin: 200px auto;
+        /*background: red;*/
+    }
+    .box1 .item {
+        width: 200px;
+        height: 200px;
+        background: #ffffff;
+        float: left;
+        display: flex;
+        padding: 5px;
+        margin-right: 30px;
+        margin-bottom: 30px;
+        box-shadow: 3px 2px 6px #333333;
+    }
+
+    .box1 .item .radio {
+        width: 180px;
+        height: 180px;
+        line-height: 200px;
+        margin: auto;
+        border: 1px solid red;
+    }
+
+    /* 圆*/
+    .item:nth-child(1) .radio {
+/*  border-radius: 1-4 length|% / 1-4 length|%; 设置4个角度的圆形的半径 */
+
+        /*  设置半径 可以是相对width 百分比 或者height的*/
+        border-radius: 50%;
+
+    }
+
+    .item:nth-child(2) .radio {
+        border-radius: 90px 90px 0 0;
+
+    }
+
+    .item:nth-child(3) .radio {
+        height: 90px;
+        border-radius: 90px 90px 0 0;
+
+    }
+
+    .item:nth-child(4) .radio {
+        border-radius: 90px 0 0 0;
+
+    }
+    .item:nth-child(5) .radio {
+        height: 90px;
+        width: 90px;
+        border-radius: 90px 0 0 0;
+
+    }
+    .item:nth-child(6) .radio {
+        height: 90px;
+        border-radius: 50%;
+
+    }
+    .item:nth-child(7) .radio {
+        width: 90px;
+        /*height: 90px;*/
+        /*border-radius: 50%;*/
+        /*  圆形属于椭圆的一种，圆形的长轴和短轴相等， 用 / 来表示x y 轴*/
+        /*border-radius: 90px / 45px;*/
+        border-radius: 45px / 90px;
+    }
+    .item:nth-child(8) .radio {
+        height: 45px;
+        border-radius: 90px  90px 0 0/ 45px 45px 0 0;
+    }
+    .item:nth-child(9) .radio {
+        width: 45px;
+        border-radius: 45px 0 0 45px/ 90px 0 0 90px;
+    }
+    .item:nth-child(10) .radio {
+        width: 45px;
+        height: 90px;
+        border-radius: 45px 0 0 0/ 90px 0 0 0;
+    }
+    .item:nth-child(11) .radio {
+        width: 45px;
+        height: 45px;
+        border:45px solid red;
+        border-radius: 90px;
+    }
+    .item:nth-child(12) .radio {
+        width: 45px;
+        height: 45px;
+        border:45px solid red;
+        border-radius: 45px;
+    }
+    .item:nth-child(13) .radio {
+        width: 45px;
+        height: 45px;
+        border:45px solid red;
+        border-radius: 45px 0 0 0;
+    }
+    .item:nth-child(14) .radio {
+        width: 45px;
+        height: 45px;
+        border:45px solid red;
+        border-radius: 45px 0 45px 0;
+    }
+    .item:nth-child(15) .radio {
+        width: 0;
+        height: 0;
+        border-width: 45px;
+        border-style: solid ;
+        border-color: red green blue yellow;
+    }
+    .item:nth-child(16) .radio {
+        width: 0;
+        height: 0;
+        border-width: 45px;
+        border-style: solid ;
+        border-color: red white green yellow;
+    }
+    .item:nth-child(17) .radio {
+        width: 0;
+        height: 0;
+        border-width: 45px;
+        border-style: solid ;
+        border-color: red white red red;
+        border-radius: 90px ;
+    }
+    .item:nth-child(18) .radio {
+        width: 0;
+        height: 0;
+        border-width: 45px;
+        border-style: solid ;
+        border-color: white red white white;
+        border-radius: 90px ;
+    }
+    .item:nth-child(19) .radio {
+        width: 90px;
+        height: 0;
+        border-top-width:45px;
+        border-bottom-width:45px;
+        border-style: solid ;
+        border-top-color: red;
+        border-bottom-color:green ;
+        border-radius: 90px ;
+    }
+    .item:nth-child(20) .radio {
+        width: 90px;
+        height: 0;
+        border-top-width:45px;
+        border-bottom-width:45px;
+        border-style: solid ;
+        border-top-color: red;
+        border-bottom-color:green ;
+        border-radius: 90px ;
+    }
+</style>
+<body>
+<div class="box1">
+    <div class="item">
+        <div class="radio"></div>
+    </div>
+    <div class="item">
+        <div class="radio"></div>
+    </div>
+    <div class="item">
+        <div class="radio"></div>
+    </div>
+    <div class="item">
+        <div class="radio"></div>
+    </div>
+
+    <div class="item">
+        <div class="radio"></div>
+    </div>
+    <div class="item">
+        <div class="radio"></div>
+    </div>
+    <div class="item">
+        <div class="radio"></div>
+    </div>
+    <div class="item">
+        <div class="radio"></div>
+    </div>
+
+    <div class="item">
+        <div class="radio"></div>
+    </div>
+    <div class="item">
+        <div class="radio"></div>
+    </div>
+    <div class="item">
+        <div class="radio"></div>
+    </div>
+    <div class="item">
+        <div class="radio"></div>
+    </div>
+
+    <div class="item">
+        <div class="radio"></div>
+    </div>
+    <div class="item">
+        <div class="radio"></div>
+    </div>
+    <div class="item">
+        <div class="radio"></div>
+    </div>
+    <div class="item">
+        <div class="radio"></div>
+    </div>
+
+    <div class="item">
+        <div class="radio"></div>
+    </div>
+    <div class="item">
+        <div class="radio"></div>
+    </div>
+    <div class="item">
+        <div class="radio"></div>
+    </div>
+    <div class="item">
+        <div class="radio"></div>
+    </div>
+</div>
+</body>
+</html>

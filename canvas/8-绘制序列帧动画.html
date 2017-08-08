@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绘制序列帧动画</title>
+</head>
+<body>
+<canvas width="500" height="500" id="cav"></canvas>
+</body>
+<script>
+    (function () {
+        var canvas=document.getElementById("cav")
+        var ctx=canvas.getContext("2d")
+        var img= new Image();
+        img.src="img/gf.png";
+        img.onload=function () {
+            var x=0;
+            var y=0;
+
+           setInterval(function () {
+               // 每次清除之前的，重新设置画布的宽高，也可以清空
+               ctx.clearRect(0,0,500,500);
+               ctx.drawImage(img,x*187,y*178,187,178,200,200,187,178);
+               x++;
+               if(x==5){
+                   x=0;
+                   y++;
+                   y%=4;
+               }
+           },1000/4);
+        }
+
+    }());
+</script>
+</html>

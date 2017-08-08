@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全局和局部变量</title>
+</head>
+<script>
+    //==============在函数外面定义变量 使用和不使用var都是全局变量===================
+    var a=1;
+    a=1;
+    //=============在函数内部使用var是局部变量，不使用是全局变量====================
+    function f() {
+        var b=1;
+        c=1;
+        console.log("局部变量b="+b);
+        console.log("全局变量c="+c);
+    }
+    f();
+//    console.log("局部变量b="+b);
+    console.log("全局变量c="+c);
+    //=============匿名函数声明不提升====================
+    a();
+    function a() {
+        
+    }
+//    b();//此处报错,b不是一个函数
+    var b=function () {
+
+    }
+    //=============不同script块中代码不影响====================
+    haha();//此处报错，没有haha()
+</script>
+<script>
+    function haha() {
+
+    }
+</script>
+<body>
+
+</body>
+</html>

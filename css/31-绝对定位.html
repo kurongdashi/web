@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>绝对定位</title>
+	<style type="text/css">
+	div{
+	width: 200px;
+	height: 200px;
+}
+.d1{
+	background-color: red;
+}
+/*绝对定位 absolute 
+	1、脱标了
+	2、无视参考的盒子的padding
+	3、绝对定位的盒子居中
+
+*/
+.d2{
+	position: absolute;
+	background-color: green;
+	/*距离top100*/
+	top:100px;
+	/*距离left100*/
+	left: 100px;
+}
+.d3{
+	width: 500px;
+	background-color: blue;
+	/*绝对定位的盒子居中，left：50% 左边框在屏幕的中间 margin-left：-width(盒子的宽度，不是width)/2 */
+	position: absolute;
+	left: 50%;
+	margin-left: -250px;
+
+}
+
+
+</style>
+<body>
+	<div class="d1"></div>
+	<div class="d2"></div>
+	<div class="d3"></div>
+</body>
+</html>

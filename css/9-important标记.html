@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Important标记</title>
+</head>
+<style type="text/css">
+	
+	#id{
+		color: green;
+	}
+	/*
+	1、important 标记后属性，权重无限大
+	2、important 只会作用一条属性，与选择器无关,选择器的权重不会增加
+	3、被important标记的属性，如果是被继承权重还是为0
+	就近原则：当所有的选择器，都没有选中标签，而是通过继承影响是，那个选择器描述的离标签近，就听谁的。
+	4、important无法影响就近原则
+	5、不建议使用important
+
+	CSS选择器总结：
+	1、选中了，比权限，如果权限一样，写在后面的覆盖前面的，
+	2、当都没有选中，谁描述的离标签更近，听谁的，如果一样近，再次比较选择器的权重，如果权重还一样，写在后面覆盖前面的。
+	
+	*/
+	.special{
+		color: blue ! important;
+	}
+
+	.d1{
+		color: red ! important;
+	}
+	.d2{
+		color: blue;
+	}
+</style>
+
+<body>
+	<p id="id" class="special">我是段落1</p>
+
+
+<div class="d1">
+	<div class="d2">
+		<div class="d3">
+			<p >我是段落2</p>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=0.5">
+    <title>弹窗</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+
+    body{
+        width: 100%;
+        height: 3000px;
+    }
+    .win_dialog{
+        /*display: none;*/
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.4);
+
+    }
+    .win_dialog .dialog{
+        margin:100px auto;
+        width: 200px;
+        height: 120px;
+        border-radius: 10px;
+        background-color: #fff;
+        padding:5px 10px;
+        text-align: center;
+    }
+    .win_dialog .dialog h3{
+        line-height:60px;
+        height: 60px;
+        border-bottom:1px solid #eee;
+        margin-bottom:10px;
+    }
+    .win_dialog .dialog button{
+        border-radius: 5px;
+        font-size: 20px;
+        background-color: transparent;
+        padding:8px 15px;
+        margin:5px;
+        border:none;
+        outline:none;
+    }
+    .win_dialog .dialog .enter{
+        border:1px solid #DFDFDF;
+        color: #fff;
+        background-color: #e92322;
+    }
+    .win_dialog .dialog .cancel{
+        border:1px solid #DFDFDF;
+        color: #333333;
+        background-color: #fff;
+    }
+</style>
+<body>
+<button>弹窗</button>
+<button>干扰</button>
+<div class="win_dialog"id="dg" >
+    <div class="dialog">
+        <h3>您确认删除商品</h3>
+        <button class="cancel">取消</button>
+        <button class="enter">确认</button>
+    </div>
+</div>
+</body>
+<script>
+    window.onload=function () {
+        var btns=document.getElementsByTagName("button");
+        var dialog=document.getElementById("dg");
+        btns[0].onclick=function () {
+//            弹窗时让窗口无法滚动，设置body的overflow =“hidden”
+            document.body.style.overflow="hidden";
+            dialog.style.display="block";
+
+        }
+        btns[2].onclick=function () {
+//            弹窗时让窗口无法滚动，设置body的overflow =“hidden”
+            document.body.style.overflow="scroll";
+            dialog.style.display="none";
+
+        }
+        btns[3].onclick=function () {
+//            弹窗时让窗口无法滚动，设置body的overflow =“hidden”
+//            document.body.style.overflow="scroll";
+//            dialog.style.display="none";
+            alert("删除商品")
+
+        }
+
+
+    }
+</script>
+</html>

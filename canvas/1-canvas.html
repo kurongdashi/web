@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas入门</title>
+</head>
+<style>
+    #cav{
+        width: 1000px;
+        height: 1000px;
+    }
+</style>
+<body>
+<!-- 不用css设置canvas的尺寸，css设置canvas会把绘制好的图像拉变形-->
+<canvas id="cav" width="500" height="500"></canvas>
+</body>
+<script>
+//    <canvas id="cav" width="500" height="500" style="width: 1000px; height: 1000px;"></canvas>
+    window.onload=function () {
+        var canvas=document.getElementById("cav");
+//        设置canvas的尺寸，只能使用本身的width ，height 属性
+        canvas.width=1000;
+        canvas.height=1000;
+//        使用style属性也会把绘制好的图像变形
+//        canvas.style.width=1000+"px";
+//        canvas.style.height=1000+"px";
+
+        var ctx=canvas.getContext("2d");
+//        从上下文中获取画笔，第一步移动画笔到指定位置
+        ctx.moveTo(100,100);
+//        第二步，开始绘制路径
+        ctx.lineTo(200,100);
+        ctx.lineTo(150,200);
+//        ctx.lineTo(100,100);
+        ctx.closePath();//闭合closepath
+//        线宽是包裹路径，在路径的里5px,外5px
+        ctx.lineWidth=10;
+
+//        填充画笔颜色
+        ctx.strokeStyle="#f00";
+//        填充边框
+        ctx.stroke();
+        ctx.fillStyle="#0f0"
+        ctx.fill()
+
+
+
+    }
+</script>
+</html>

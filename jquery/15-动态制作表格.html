@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态生成表格</title>
+    <style type="text/css">
+        table {
+            border: 1px solid black;
+        }
+
+        table th {
+            width: 120px;
+            background: #fdefde;
+        }
+    </style>
+</head>
+<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+    var data = [{
+        "title": "标题党1号",
+        "address": "北京",
+        "des": "北京欢迎您"
+    }, {
+        "title": "标题党2号",
+        "address": "北京2",
+        "des": "北京欢迎您2"
+    }, {
+        "title": "标题党3号",
+        "address": "北京3",
+        "des": "北京欢迎您3"
+    }]
+    $(function () {
+        for (var a = 0; a < data.length; a++) {
+//            这个只能用这种方式创建一个新的标签，不能用$("tr"),否则会引用到表格头中的tr
+            var tr=$("<tr></tr>");
+            tr.append("<td>" + data[a].title + "</td>");
+            tr.append("<td>" + data[a].address + "</td>");
+            tr.append("<td>" + data[a].des + "</td>");
+            $(".tbody").append(tr);
+        }
+    });
+</script>
+<body>
+<div class="d">
+    <table class="table">
+        <tr>
+            <th>标题</th>
+            <th>地址</th>
+            <th>说明</th>
+        </tr>
+        <tbody class="tbody">
+
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

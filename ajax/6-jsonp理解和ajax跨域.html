@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jsonp理解</title>
+</head>
+<body id="body">
+
+</body>
+<script>
+    //jsonp的定义： 返回的不是一个json文本，而是一个调用函数，该函数必须在本地定义，然后服务器返回调用的javascript脚本，和函数里的参数
+//    jsonp:json with padding json的补充
+    function hello(data){
+        console.log(data);
+        if(data==null)
+        data="hello world";
+
+        console.log(data);
+    }
+
+
+
+</script>
+<!--
+   jsonp的使用：script 的src可以在ajax中跨域
+  ajax不允许直接访问HTTP域名资源，当我们要用网络上提供的公共接口资源时就可以使用jsonp的形式，必须返回调用的javascript脚本
+  script 的src可以在ajax中跨域，来请求非本地的数据也就是http开头的资源
+
+-->
+<!--方式一：直接使用-->
+<!--<script  src="jsonp.php?_jsonp=hello"></script>-->
+<?php
+	// php语法严格，必须要结束符
+	//获取传递过来的方法名
+	$temp=$_GET["_jsonp"];
+
+	// 组装,返回一个调用脚本
+	$param="zhangsan";
+	//错误写法
+	//echo $temp."(".$param.")";//返回 hello(zhangsan)
+	//echo $temp."("."zhangsan".")";//返回 hello(zhangsan)
+	//正确写法
+	//json_encode 转换成字符串
+	echo $temp."(".json_encode($param).")";//返回 hello("zhangsan")
+?>
+
+<!--方式二：拼装-->
+<script>
+    var body=document.getElementById("body");
+    var script=document.createElement("script");
+    var url="jsonp.php?_jsonp=hello";
+    script.src=url;
+    body.appendChild(script);
+</script>
+</html>

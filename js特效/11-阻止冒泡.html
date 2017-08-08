@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>阻止冒泡</title>
+</head>
+<style>
+    .box{
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        display: none;
+    }
+</style>
+<body>
+<button id="btn">按钮</button>
+<div class="box" id="box"></div>
+</body>
+<script src="jquery-3.1.1.js"></script>
+<script>
+    var btn=document.getElementById("btn");
+//    冒泡事件：当子盒子和父级盒子设置了相同的事件后，因为子盒子在父盒子中，所以子盒子的事件会在父盒子响应，bulr,fouce,load,onload 事件不会冒泡
+    btn.onclick=function (e) {
+        $(".box").show();
+//        标准浏览器 propagation 传递
+        var event=e||window.event;
+//        阻止冒泡
+        if(event&& event.stopPropagation()){
+            event.stopPropagation()
+        }else{
+            event.cancelBubble();
+        }
+    }
+//    点击空白处，（必须判断点击空间的id如果id正确，说明点击的确实是空白处）
+    document.onclick=function (e) {
+//        获取点击对象的id
+        var targetId=e.target?e.target.id:e.srcElement.id;
+        if(targetId!="box"){
+            $(".box").hide();
+        }
+    }
+</script>
+</html>

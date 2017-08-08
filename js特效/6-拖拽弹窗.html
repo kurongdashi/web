@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拖拽进度条</title>
+</head>
+<style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    body{
+        position: relative;
+    }
+    .box{
+        position: absolute;
+        width:300px;
+        height:300px;
+        background-color: pink;
+        margin:100px auto;
+    }
+
+</style>
+<body>
+<div class="box">
+
+</div>
+</body>
+<script src="jquery-3.1.1.js"></script>
+<script>
+    $(function () {
+//        鼠标按下划块
+        var down=false;
+        $(".box").mousedown(function (e) {
+            down=true;
+            console.log("1"+down)
+            var offset=$(".box").offset()
+            var x=offset.left;
+            var y=offset.top;
+
+//            鼠标在整个文档上滑动
+            $(document).mousemove(function (e) {
+                var x1=e.clientX;
+                var y1=e.clientY;
+                console.log("2"+down)
+                if(down){
+                var dx=x1-x;
+                var dy=y1-y;
+                    console.log("dx="+dx+": dy="+dy)
+                $(".box").css({
+                    "left":dx+"px",
+                    "top":dy+"px"
+                });
+                }
+            });
+        });
+        //        鼠标在划块上弹起
+        $(".box").mouseup(function () {
+            down=false;
+            console.log("3"+down)
+        });
+        //        鼠标在划块外面弹起
+        $(document).mouseup(function () {
+
+            down=false;
+            console.log("3"+down)
+        });
+
+
+
+    });
+</script>
+</html>

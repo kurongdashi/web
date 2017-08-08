@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>背景图的渐变</title>
+</head>
+<style>
+    body{
+        background: #e1e1e1;
+    }
+    .box1{
+        width:1000px;
+        margin:100px auto;
+
+    }
+    .box1 .item{
+        float: left;
+        display: flex;
+        margin-right:30px;
+        margin-bottom: 30px;
+        width:200px;
+        height:200px;
+        background: #fff;
+        padding:10px;
+        box-shadow:3px 2px 6px #333333 ;
+
+    }
+    .item .gradient{
+        margin:auto;
+        width:180px;
+        height:180px;
+    }
+    /*  渲染角度0-360 从下左上右 ，顺时针方向从下开始*/
+    .item:nth-child(1) .gradient{
+        /* 射线发散渐变，从盒子中一个点向四周发散渐变*/
+        /* 参数说明：120 辐射范围 （也可以写x y 轴） ，center center x y轴坐标(以盒子左上角为参考) ，red gold 渐变颜色*/
+        background-image: radial-gradient(120px at center center,red,gold);
+    }
+    .item:nth-child(2) .gradient{
+        background-image: radial-gradient(circle at center center,red,gold);
+    }
+    .item:nth-child(3) .gradient{
+        background-image: radial-gradient(120px at 0 0,red,gold);
+    }
+    .item:nth-child(4) .gradient{
+        background-image: radial-gradient(ellipse at center,red,gold);
+    }
+    .item:nth-child(5) .gradient{
+
+    }
+    .item:nth-child(6) .gradient{
+    }
+</style>
+<body>
+<div class="box1">
+
+    <div class="item">
+        <div class="gradient"></div>
+    </div>
+    <div class="item">
+        <div class="gradient"></div>
+    </div>
+    <div class="item">
+        <div class="gradient"></div>
+    </div>
+    <div class="item">
+        <div class="gradient"></div>
+    </div>
+    <div class="item">
+        <div class="gradient"></div>
+    </div>
+    <div class="item">
+        <div class="gradient"></div>
+    </div>
+    <div class="item">
+        <div class="gradient"></div>
+    </div>
+
+</div>
+</body>
+</html>

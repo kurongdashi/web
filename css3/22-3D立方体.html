@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3D立方体</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+
+    }
+
+    .box {
+        width: 200px;
+        margin: 100px auto;
+    }
+
+    ul {
+        list-style: none;
+        position: relative;
+        transition: transform 6s;
+        transform-style: preserve-3d;
+    }
+
+    ul li {
+        width: 200px;
+        height: 200px;
+        color: white;
+        text-align: center;
+        line-height: 200px;
+        font-size: 40px;
+        /*利用定位把所以的面拼在一起*/
+        position: absolute;
+    }
+
+    ul li:nth-child(1) {
+        background: #f00;
+        /*当同时加上translateZ时，盒子会原理旋转的轴*/
+        transform: rotateX(0deg) translateZ(100px);
+    }
+
+    ul li:nth-child(2) {
+        background: #ff000066;
+        transform: rotateX(-90deg) translateZ(100px);
+    }
+
+    ul li:nth-child(3) {
+        background: #00f;
+        transform: rotateX(-180deg) translateZ(100px);
+    }
+
+    ul li:nth-child(4) {
+        background: #00ff99;
+        transform: rotateX(-270deg) translateZ(100px);
+    }
+
+    ul li:nth-child(5) {
+        background: #ff99cc;
+        transform: rotateY(-90deg) translateZ(100px);
+    }
+
+    ul li:nth-child(6) {
+        background: #ffff00;
+        transform: rotateY(90deg) translateZ(100px);
+    }
+    ul:hover{
+        transform: rotateX(360deg) rotateY(360deg) ;
+    }
+
+</style>
+<body>
+<div class="box">
+    <ul>
+        <li>第1个盒子</li>
+        <li>第2个盒子</li>
+        <li>第3个盒子</li>
+        <li>第4个盒子</li>
+        <li>第5个盒子</li>
+        <li>第6个盒子</li>
+    </ul>
+</div>
+</body>
+</html>

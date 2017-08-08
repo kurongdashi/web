@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>水平无限轮播图</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    /* 去除img 底部3px 的样式*/
+    img{
+        vertical-align: top;
+    }
+
+    .slide {
+        width: 560px;
+        height: 300px;
+        margin: 200px auto;
+        position: relative;
+        overflow: hidden;
+    }
+
+    ul {
+        position: absolute;
+        list-style: none;
+        width:600%;
+    }
+
+    ul li {
+        float: left;
+
+    }
+    .slide .prev, .next {
+        width: 76px;
+        height: 112px;
+        position: absolute;
+        top: 50%;
+        margin-top: -56px;
+        background: url(img/prev.png) no-repeat;
+        z-index: 99;
+    }
+
+    .next {
+        right: 0;
+        background: url(img/next.png) no-repeat;
+    }
+</style>
+<body>
+
+<div class="slide">
+    <ul class="list" style="left: -560px;">
+        <li><img src="img/4.png" alt=""></li>
+        <li><img src="img/1.png" alt=""></li>
+        <li><img src="img/2.png" alt=""></li>
+        <li><img src="img/3.png" alt=""></li>
+        <li><img src="img/4.png" alt=""></li>
+        <li><img src="img/1.png" alt=""></li>
+    </ul>
+
+    <div class="arrow" id="arrow">
+        <a href="javascript:;" class="prev"></a>
+        <a href="javascript:;" class="next"></a>
+    </div>
+</div>
+</body>
+<script src="jquery-3.1.1.js"></script>
+<script>
+    $(function () {
+        var j=0;
+        $(".arrow").children().on("click",function () {
+
+                if(this.className=="prev"){
+//                    前一个，ul 的left++
+                    change(560);
+                }else{
+//                    后一个，left
+//                    alert("next")
+                    change(-560);
+                }
+        });
+
+        function change(flag) {
+
+            var newleft=$("ul").position().left+flag;
+
+            $("ul").animate({"left":newleft+"px"},function () {
+                if (newleft>-560){
+                    $("ul").css("left",-2240+"px");
+                }else if(newleft<-2240){
+                    $("ul").css("left",-560+"px");
+                }
+            })
+
+        }
+
+    });
+</script>
+</html>

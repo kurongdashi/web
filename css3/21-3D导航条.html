@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3D导航条</title>
+</head>
+<style>
+*{
+    margin:0;
+    padding:0;
+}
+    .nav{
+        width:1000px;
+        margin:20px auto;
+        background: pink;
+
+    }
+    .nav a{
+        display: inline-block;
+        color: white;
+        text-decoration: none;
+        perspective: 500px;
+    }
+
+    .nav a span{
+        display: inline-block;
+        padding:0 25px;
+        background: #2195de;
+        line-height:40px;
+        position: relative;
+        /*让伪元素以3D效果展示*/
+        transform-style: preserve-3d;
+        transition: transform 1s;
+    }
+
+    .nav a span::after{
+        height:100%;
+        width:100%;
+        content: attr(data-hover);
+        position: absolute;
+        top:100%;
+        left:0;
+        background: #0965a0;
+        transform-origin: top;
+        transform: rotateX(-90deg);
+    }
+    .nav a:hover span{
+        transform-origin: top;
+        transform: rotateX(90deg) translateY(-20px);
+    }
+
+</style>
+<body>
+<div class="nav">
+
+    <a href="#">
+        <span data-hover="女神啊">张靓颖</span>
+    </a>
+    <a href="#">
+        <span data-hover="女神啊">张靓颖</span>
+    </a>
+    <a href="#">
+        <span data-hover="女神啊">张靓颖</span>
+    </a>
+    <a href="#">
+        <span data-hover="女神啊">张靓颖</span>
+    </a>
+    <a href="#">
+        <span data-hover="女神啊">张靓颖</span>
+    </a>
+    <a href="#">
+        <span data-hover="女神啊">张靓颖</span>
+    </a>
+</div>
+</body>
+</html>

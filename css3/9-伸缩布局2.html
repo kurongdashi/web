@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>伸缩布局-调整父盒子的布局</title>
+</head>
+<style>
+    .box{
+        width:1000px;
+
+    }
+    .box ul{
+        list-style: none;
+        /*1、指定盒子为伸缩盒子*/
+        display: flex;
+        /*2、指定布局方向*/
+        flex-direction: row;
+
+        /*4、align-items: 调整侧轴*/
+        align-items: flex-start;
+        /* 5、item 过多一行占不下，换行*/
+        flex-wrap:wrap;
+        /*盒子很高*/
+        min-height:800px;
+        /*6、调整y轴的每一行的item向center */
+        align-content: center;
+
+        align-content: flex-start;
+        align-content: flex-end;
+
+    }
+    ul li{
+        margin:10px;
+        width:200px;
+        height:200px;
+        text-align: center;
+        line-height:200px;
+        background: pink;
+    }
+</style>
+<body>
+<div class="box">
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+
+    </ul>
+</div>
+</body>
+</html>

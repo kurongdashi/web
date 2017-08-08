@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TAB栏页面切换</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .tab {
+            width: 200px;
+            height: 30px;
+            background: #00ff99;
+            margin: 100px auto;
+            padding-left: 10px;
+        }
+
+        .tab ul {
+            list-style: none;
+        }
+
+        .tab li {
+            margin-right: 10px;
+            width: 40px;
+            text-align: center;
+            line-height: 30px;
+            height: 30px;
+            float: left;
+        }
+
+        .active {
+            background: green;
+        }
+
+        .content {
+            width: 300px;
+            height: 300px;
+            display: none;
+        }
+
+        .content1 {
+            background: red;
+        }
+
+        .content2 {
+            background: darkred;
+        }
+
+        .content3 {
+            background: green;
+        }
+
+        .content4 {
+            background: blue;
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
+</head>
+<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+//        mouseenter 和mouseover 是一对操作， mouseenter 是每此进入li里的子控件都只响应一次
+//        mouseover 则响应多次，只要进入一次li里的子元素，就会响应一次
+        $(".tab li").mouseenter(function () {
+            $(this).addClass("active").siblings().removeClass("active");
+//            获取到当前的元素角标
+            var index = $(this).index();
+//            通过改变所以div的显示与不显示更改页面内容
+            $(".content").eq(index).addClass("show").siblings().removeClass("show");
+
+
+        });
+    });
+
+</script>
+<body>
+<div class="tab">
+    <ul>
+        <li>推荐</li>
+        <li>推荐</li>
+        <li>主页</li>
+        <li>我们</li>
+    </ul>
+</div>
+<div class="content content1"></div>
+<div class="content content2"></div>
+<div class="content content3"></div>
+<div class="content content4"></div>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>背景位置用单词描述</title>
+</head>
+<style type="text/css">
+/*
+用单词描述位置的用法：
+当背景图大于盒子
+通栏banner
+
+*/
+	.d{
+		height: 1000px;
+		border:1px solid black;
+		background-image:url(images/2.jpg);
+		background-repeat: no-repeat;
+		/*第一个单词描述左右，第二个单词描述上下*/
+		background-position: center top ;
+		/*背景修复，背景不滚动 */
+		background-attachment: fixed;
+	}
+</style>
+<body>
+	<div class="d"></div>
+</body>
+</html>

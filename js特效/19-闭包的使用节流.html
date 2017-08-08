@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包的使用节流</title>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+</body>
+<script>
+    var num=0;
+//    window.onresize=function () {
+//        document.body.innerHTML=window.innerWidth;
+//        num++;
+//        console.log(num);
+//    }
+   window.onresize=resize(function () {
+       num++;
+            console.log(num)
+   },300);
+//   使用闭包，每次延时执行一次完成后才调用，而不是执行过程中就不停的调用，节流其实就是延时执行
+   function resize(fn,delay) {
+        var timer=null;
+        return function () {
+            clearTimeout(timer);
+            timer=setTimeout(fn,delay);
+
+        }
+
+
+
+   }
+
+
+
+</script>
+</html>

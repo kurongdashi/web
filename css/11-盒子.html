@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>盒子</title>
+</head>
+<style type="text/css">
+	/*
+	1、当padding增加时尺寸盒子会变化，如果要保持盒子大小不变需要修改内容的的width和height。
+	padding:后面的参数是顺时针方向走的上，右，下，左
+	2、border：边框width 线形 颜色  每个属性有4个方向 ，如果只写一个方向的后面方向的同第一个方向的
+	3、如果不能用CCS来制作边框，就需要切图使用背景图
+	边框线形：solid dashed dotted
+	*/
+	div{
+		width: 200px;
+		height: 200px;
+		border: 1px solid #f00;
+	}
+	/*
+	按要素拆分:
+	1、拆分成3个要素
+	2、每个要素 a.属性可以有多个值用空格隔开 b.如果属性只有一个值，那么其他的边属性也等于此值
+	c.如果有2个值，那就是 第一个值代表 上和下 ，第二个值代表左和右
+	d.如果有3个值，同理
+	 */
+	 /* 按照要素分：如果每一条边都不同的话最多3条语句就可以表示*/
+	.d2{
+		/*尺寸 width*/
+		border-width: 10px 20px;
+		/*线形 style：实线 虚线 点*/
+		border-style: solid dashed dotted;
+		/*颜色 color*/
+		border-color: red green blue yellow;
+	}
+	/*
+	按方向分:
+	1、因为每一条边都有3个要素，所以可以拆分成12句代码
+	*/
+	.d3{
+		/*按方向分：如果每条边都不同的话最多用4条语句就可以了*/
+		border-top: 10px solid green;
+		/*上面的语句可以拆分成下面3条，但是不建议使用*/
+		border-right-width: 10px;
+		border-right-color: green;
+		border-right-style: solid;	
+	}
+	/* 三角形的制作*/
+	.d4{
+		width: 0px;
+		height: 0px;
+
+		border:20px solid white ;
+		border-top-color: blue;
+
+	}
+</style>
+<body>
+	<div class="d1"></div>
+	<div class="d2"></div>
+	<div class="d3"></div>
+	<div class="d4"></div>
+</body>
+</html>

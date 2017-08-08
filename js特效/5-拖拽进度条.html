@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拖拽进度条</title>
+</head>
+<style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    .box{
+        width:500px;
+        margin:100px auto;
+    }
+    .progress{
+        position: relative;
+        width:500px;
+        height:10px;
+        background-color: pink;
+    }
+    .block{
+        position: absolute;
+        width:10px;
+        height:50px;
+        background-color: blue;
+        top:-200%;
+    }
+
+</style>
+<body>
+<div class="box">
+    <div class="progress"><div class="block"></div></div>
+</div>
+</body>
+<script src="jquery-3.1.1.js"></script>
+<script>
+    $(function () {
+//        点击进度条
+        $(".progress").click(function (e) {
+            var x1=e.clientX;
+//            进度条左边距离
+            var x2=$(this).offset();
+                var d=x1-x2.left;
+            $(".block").animate({"left":d+"px"},100);
+        });
+
+        //        jquery 中去掉了on 直接mouseover()
+//        鼠标按下划块
+        var down=false;
+        $(".block").mousedown(function (e) {
+            down=true;
+            console.log("1"+down)
+            var x2=$(".progress").offset().left;
+//            鼠标在整个文档上滑动
+            $(document).mousemove(function (e) {
+                console.log("2"+down)
+                if(down){
+                var x3=e.clientX;
+                if(x3<710){
+                    x3=710;
+                }else if(x3>1210){
+                    x3=1210;
+                }
+                var d=x3-x2;
+                console.log("d="+d)
+                $(".block").css("left",d+"px");
+                }
+            });
+        });
+        //        鼠标在划块上弹起
+        $(".block").mouseup(function () {
+            down=false;
+            console.log("3"+down)
+        });
+        //        鼠标在划块外面弹起
+        $(document).mouseup(function () {
+            down=false;
+            console.log("3"+down)
+        });
+
+
+
+    });
+</script>
+</html>

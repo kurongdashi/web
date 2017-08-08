@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js特效</title>
+</head>
+<style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    #box{
+        width:300px;
+        height:300px;
+        border: 1px solid red;
+        margin-left:50px;
+
+    }
+    #box1{
+        width:200px;
+        height:200px;
+        background-color: pink;
+    }
+</style>
+<body>
+<div id="box">
+    <div id="box1"></div>
+</div>
+</body>
+<script>
+    var div=document.getElementById("box");
+    var div1=document.getElementById("box1");
+//    获取盒子的宽高 包括border padding
+    console.log("div宽="+div.offsetWidth+":"+"div宽="+div.offsetHeight);
+//    offset 可以获取属子盒子到(定位的)父级盒子的距离，而且只读，如果没有定位父级盒子，就找body
+    console.log("left="+div.offsetLeft)
+//    style只能获取行内属性，可写
+//    div.style.width="500px";
+//    console.log(div.style.width)
+//    2 offsetParent 获取父盒子（定位的）
+    console.log(div1.offsetParent);
+//    进入
+    div1.onmouseover=function () {
+//        console.log("mouseover")
+    }
+//    出去
+    div1.onmouseout=function () {
+        console.log("onmouseout")
+    }
+
+    div1.onmouseenter=function () {
+        console.log("onmouseenter")
+    }
+//    鼠标弹起啦
+    div1.onmouseup=function () {
+        console.log("onmouseup")
+    }
+//    鼠标按下
+    div1.onmousedown=function () {
+        console.log("onmousedown")
+    }
+//    鼠标在盒子内移动
+    div1.onmousemove=function () {
+//        console.log("onmousemove")
+    }
+//    -----------------鼠标事件坐标-------------------------
+    document.onclick=function (event) {
+//        固定定位的值，相对于浏览器的窗口
+        console.log(event.clientY);
+//        绝对定位的值，相对于整个文档的位置
+        console.log(event.pageY);
+//        相对于电脑屏幕和浏览器窗口无关
+        console.log(event.screenY)
+
+
+    }
+
+</script>
+</html>

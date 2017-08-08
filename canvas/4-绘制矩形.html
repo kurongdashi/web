@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绘制矩形</title>
+</head>
+<body>
+<canvas id="cav" width="500" height="500"></canvas>
+</body>
+<script>
+    (function () {
+        var canvas=document.getElementById("cav")
+        var ctx=canvas.getContext("2d");
+        ctx.strokeStyle="red";
+        ctx.lineWidth=5;
+        ctx.rect(100,100,100,100);
+//        ctx.stroke();
+        ctx.fillRect(200,300,100,100);
+        ctx.strokeRect(200,400,100,100)
+        ctx.clearRect(100,500,500,500)
+
+    }());
+</script>
+</html>

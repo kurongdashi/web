@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案例1</title>
+</head>
+<body>
+<div id="container"></div>
+</body>
+<script src="libs/konva/konva.js"></script>
+<script>
+    var stage=new Konva.Stage({
+        container:"container",
+        width:window.innerWidth,
+        height:window.innerHeight
+    });
+    var layer=new Konva.Layer();
+    stage.add(layer);
+//    舞台中心点坐标
+    var ceX=stage.width()/2;
+    var ceY=stage.height()/2;
+
+//    画虚线
+    var dash1_r=120;
+    var dash2_r=200;
+    var circle1_r=50;
+    var circle1_ring_r=circle1_r+20;
+
+    var dash1=new Konva.Circle({
+        x:ceX,
+        y:ceY,
+        radius:dash1_r,
+        stroke:"blue",
+        dash:[10,4],//实线10，间隔4
+        strokeWidth:4
+
+    })
+    layer.add(dash1);
+
+    var dash2=new Konva.Circle({
+        x:ceX,
+        y:ceY,
+        radius:dash2_r,
+        stroke:"blue",
+        dash:[10,4],
+        strokeWidth:4
+
+    })
+    layer.add(dash2);
+
+    var circle1=new Konva.Circle({
+        x:ceX,
+        y:ceY,
+        radius:circle1_r,
+        stroke:"blue",
+        strokeWidth:4,
+        fill:"blue"
+
+    })
+    layer.add(circle1);
+
+
+    var circle1_ring=new Konva.Ring({
+        x:ceX,
+        y:ceY,
+        innerRadius:circle1_r,
+        outerRadius:circle1_ring_r,
+        strokeWidth:4,
+        fill:"#ccc",
+        opacity:0.5
+
+    })
+    layer.add(circle1_ring);
+
+    var text1=new Konva.Text({
+        x:ceX-80/2,
+        y:ceY-10,
+        width:80,
+        align:"center",
+        text:"深圳中心",
+        fontFamily:"微软雅黑",
+        fontStyle:"bold",
+        fontSize:20,
+        strokeWidth:4,
+        fill:"#fff"
+
+    })
+    layer.add(text1);
+
+
+
+
+
+
+    layer.draw();
+
+
+</script>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>对象原形</title>
+</head>
+<body>
+</body>
+<script>
+    // javascript 数据类型 String number object undefined null array
+    // 给一个类定义一个原形 属性，方法，则所有的该类，都具有,关键字prototype，对象原形相当于父类接口，在接口中定义的东西所有对象都具有
+//    函数即对象
+//    1、给已有类定义prototype
+    Array.prototype.aa=function () {
+        alert("类定义一个原形")
+    }
+    var a1=[];
+//    a1.aa();
+//    2、给自定义类定义prototype
+    function Person() {
+        this.name="张飞";
+    }
+    Person.prototype.show=function () {
+        alert("我的名字是："+this.name);
+    }
+    var p=new Person();
+//    p.show();
+
+</script>
+</html>

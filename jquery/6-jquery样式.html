@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery样式</title>
+    <style type="text/css">
+        .item {
+            background: #23ff33;
+        }
+        .item1 {
+            background: #23ff33;
+        }
+    </style>
+</head>
+<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+//   1 添加样式
+        $("li").eq(0).css("font-size", "20px");
+//    2 添加已经写好的样式
+        $("li:eq(1)").addClass("item")
+//    3 移除某个li的样式
+        $("li:eq(1)").removeClass("item")
+//    4、切换样式,实际上是判断有没有该样式，如果有就移除，没有就加上，这个常用
+        $("li:eq(2)").click(function () {
+
+            $(this).toggleClass("item")
+
+        });
+
+    });
+
+</script>
+<body>
+<div class="d">
+    <ul>
+        <li>1我是列表</li>
+        <li>2我是列表</li>
+        <li>3我是列表</li>
+        <li>4我是列表</li>
+        <li>5我是列表</li>
+    </ul>
+</div>
+</body>
+</html>

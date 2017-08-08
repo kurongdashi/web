@@ -1,0 +1,338 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>博雅</title>
+</head>
+<style type="text/css">
+	*{
+		margin:0;
+		padding: 0;
+	}
+	body{
+		font-style: 14px;
+		/*给工作body增加一个height方便，滚动设置*/
+		height: 1300px;
+		font-family: "Microsoft YaHei","SimSub";
+	}
+	.header{
+		height: 57px;
+		background-color: #191D3A;
+	}
+	.inner_c{
+		width: 1000px;
+		margin: 0 auto;
+	}
+	.header .log{
+		width: 224px;
+		height: 57px;
+		float: left;
+	}
+	.header .log a{
+		text-indent: -999em;
+		display: block;
+		width: 224px;
+		height: 57px;
+		background: url(images/log.png) no-repeat;
+
+	}
+	.header .nav{
+		float: left;
+	}
+	.header .nav ul{
+		list-style: none;
+	}
+	.header .nav ul li{
+		float: left;
+		line-height: 57px;
+		text-align: center;
+		width: 100px;
+		border-left:1px solid #fff;
+	}
+	.header .nav ul li a{
+		display: block;
+		width: 100px;
+		color: #818496;
+		text-decoration: none;
+		line-height: 57px;
+	}
+	.header .nav ul li a.one{
+		background-color: #252947;
+		color: white;
+	}
+	.header .nav ul li a.left{
+		border-right: 1px solid #fff;
+	}
+	.header .nav ul li a:hover{
+		background-color: #252947;
+		color: white;
+	}
+	.header .jrwm_box{
+		padding-top: 10px;
+		padding-left: 48px;
+		width: 50px;
+		float: left;
+	}
+	/*banner */
+	.banner{
+		height: 465px;
+		background: url(images/banner.jpg) no-repeat center top;
+	}
+	.content{
+		margin-top: 50px;
+		height: 650px;
+		background: url(images/indexbg.jpg) no-repeat center bottom;
+	}
+	.content .prodect{
+		height: 229px;
+		border-bottom: 1px solid #DBE1E7;
+	}
+	.content .prodect ul{
+		list-style: none;
+	}
+	.content .prodect ul li{
+		float: left;
+		margin-right: 43px;
+		width: 218px;
+
+	}
+	.content .prodect ul li p img{
+		width: 218px;
+		height: 130px;
+	}
+	.content .prodect ul li.last{
+		width: 217px;
+		margin-right: 0px;
+	}
+	.content .prodect ul li h3{
+		text-align: center;
+		line-height: 38px;
+	}
+	.content .prodect ul li p{
+		text-align: center;
+	}
+	.content .prodect ul li p a{
+		text-decoration: none;
+		/*让a标签有一个文字和一个图片*/
+		padding-right: 14px;
+		background: url(images/arrow.png) no-repeat right center;
+		color: #38B774;
+	}
+	.content .info{
+		padding-top: 53px;
+	}
+	.content .info .news{
+		float: left;
+		width: 500px;
+		background: url(images/news.jpg);
+		padding-top: 120px;
+		position: relative;
+	}
+	/*绝对定位，子绝对父相对*/
+	.content .info .news .more{
+		background-image: url(images/more.png);
+		position: absolute;
+		width: 66px;
+		height: 28px;
+		top: 40px;
+		left: 218px;
+	}
+	.content .info .news ul{
+		padding: 0 20px;
+		list-style: none;
+	}
+	.content .info .news ul li{
+		line-height: 50px;
+		border-bottom: 1px solid #DBE1E7;
+	}
+	.content .info .news ul li span{
+		color: #B6D4EE;	
+	}
+	.content .info .news ul li a{
+		margin-left: 22px;
+		text-decoration: none;
+	}
+	.content .info .news ul li a:hover{
+		color: orange;
+	}
+	.content .info .jobs{
+		position: relative;
+		width: 500px;
+		height: 310px;
+		float: left;
+		background: url(images/hr.jpg);
+	}
+	.content .info .jobs .more{
+		background-image: url(images/more.png);
+		position: absolute;
+		width: 66px;
+		height: 28px;
+		top: 40px;
+		left: 218px;
+	}
+	.content .info .jobs .title{
+		padding-top: 40px;
+		padding-left: 80px;
+	}
+	.content .info .jobs .title h3{
+		/*文字向左缩进*/
+		text-indent: -888em;
+		width: 112px;
+		height: 51px;
+		background-image: url(images/byzp.png);
+	}
+	.content .info .jobs .j{
+		padding-top: 18px;
+		padding-left: 20px;
+		width: 305px;
+	}
+	.content .info .jobs .j h4{
+		line-height: 38px;
+		color: white;
+	}
+	.content .info .jobs .j ul{
+		list-style: none;
+	}
+	.content .info .jobs .j ul li{
+		line-height: 38px;
+		border-bottom:1px solid #6FDEA3;
+	}
+	.content .info .jobs .j ul li a{
+		text-decoration: none;
+		color: white;
+		font-style:18px ;
+	}
+	.content .info .jobs .j ul li a:hover{
+		color: orange;
+	}
+	.footer{
+		height: 90px;
+		background: #191D3A;
+		color: #818496;
+	}
+	.footer .part1{
+		float: left;
+		line-height: 90px;
+		width: 300px;
+		height: 90px;
+	}
+	.footer .part1 a{
+		text-decoration: none;
+	}
+	.footer .part2{
+		float: left;
+		width: 700px;
+		height: 90px;
+	}
+</style>
+<body>
+	<div class="header">
+		<div class="inner_c">
+			<h1 class="log">
+			<a href="#">博雅互动世界级的游戏公司</a>
+			</h1>
+			<div class="nav">
+				<ul>
+					<li><a href="#" class="one">首页</a></li>
+					<li><a href="#">博雅游戏</a></li>
+					<li><a href="#">博雅新闻</a></li>
+					<li><a href="#">客服中心</a></li>
+					<li><a href="#">关于我们</a></li>
+					<li><a href="#" class="left">投资者关系</a></li>
+				</ul>
+			</div>
+			<div class="jrwm_box">
+				<a href="#" class="jrwm"><img src="images/jrwm.png" alt="" /></a>
+			</div>
+		</div>
+	</div>
+	<div class="banner">
+	</div>
+	<!-- 内容 -->
+	<div class="content ">
+		<div class="inner_c">
+			<div class="prodect">
+				<ul>
+					<li>
+						<p><img src="images/prodect1.jpg" alt="" /></p>
+						<h3>BPT宣传片</h3>
+						<p><a href="#">点击播放</a></p>
+					</li>
+					<li>
+						<p><img src="images/prodect2.jpg" alt="" /></p>
+						<h3>BPT宣传片</h3>
+						<p><a href="#">点击播放</a></p>
+					</li>
+					<li>
+						<p><img src="images/prodect3.jpg" alt="" /></p>
+						<h3>BPT宣传片</h3>
+						<p><a href="#">点击播放</a></p>
+					</li>
+					<li class="last">
+						<p><img src="images/prodect4.jpg" alt="" /></p>
+						<h3>BPT宣传片</h3>
+						<p><a href="#">点击播放</a></p>
+					</li>
+				</ul>
+			</div>
+			<div class="info">
+				<div class="news">
+				<span class="more"></span>
+					<ul>
+						<li>
+						<span>09 / 28</span>
+						<a href="">2015国际扑克大赛在博雅</a>
+						</li>
+						<li>
+						<span>09 / 28</span>
+						<a href="">2015国际扑克大赛在博雅</a>
+						</li>
+						<li>
+						<span>09 / 28</span>
+						<a href="">2015国际扑克大赛在博雅</a>
+						</li>
+						<li>
+						<span>09 / 28</span>
+						<a href="">2015国际扑克大赛在博雅</a>
+						</li>
+
+					</ul>
+				</div>
+				<div class="jobs">
+						<span class="more"></span>
+					<div class="title">
+					<!-- 此处写文字是为了，搜索引擎能够搜索到，然后将文字隐藏，显示出图片是为了界面的美观 -->
+						<h3>
+							博雅招聘
+						</h3>
+						
+					</div>
+					<div class="j">
+					<h4>专场招聘岗位：</h4>
+					<ul>
+						<li><a href="#">PHP开发工程师</a></li>
+						<li><a href="#">PHP开发工程师</a></li>
+						<li><a href="#">PHP开发工程师</a></li>
+						<li><a href="#">PHP开发工程师</a></li>
+					</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer ">
+		<div class="inner_c">
+			<div class="part1 ">
+			<a href="">网站地图</a>
+			<span>|</span>
+			<a href="">免责声明</a>
+			</div>
+
+
+			<div class="part2">
+				<span>wangzhan</span>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

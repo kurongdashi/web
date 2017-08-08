@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>绝对定位参考点</title>
+	<style type="text/css">
+	*{
+		margin:0;
+		padding: 0;
+	}
+		div{
+			width: 200px;
+			height: 200px;
+		}
+/*父盒子相对定位*/
+	.d1{
+
+		border:10px solid red;
+		position: relative;
+		/*距离top100*/
+		top:100px;
+		/*距离left100*/
+		left: 100px;
+	}
+/*子盒子绝对定位，后代的盒子将以相对定位的父辈盒子作为参考点
+	子盒子将忽略父盒子的padding 可以用来盖住某一部分
+*/
+p{
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	/*top: 10px;*/
+	/*left: 10px;*/
+	background-color: orange;
+}
+
+</style>
+<body>
+	<div class="d1">
+		<p></p>
+	</div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>透视的3D效果</title>
+</head>
+<style>
+    body{
+        perspective: 500px;
+    }
+    .box{
+        width:300px;
+        height:200px;
+        overflow: hidden;
+        margin:0 auto;
+        border:1px solid red;
+        /* 给父盒子增加透视，子盒子做3D转换时受益，有明显的3D效果 ，此参数的值越小效果越明显*/
+        perspective: 500px;
+        /* 透视的聚焦点位置，设置，默认在加透视盒子的center */
+        /*perspective-origin: 200;*/
+    }
+    .box img{
+        width:300px;
+        height:200px;
+        transition:all 5s;
+    }
+    .box:hover img{
+        transform: rotateX(-80deg) translateZ(100px);
+        /*度数为正值向外面翻，为负数向里面*/
+        /*transform: rotateX(-80deg);*/
+        /*transform-origin: left;*/
+        /*transform: rotateZ(45deg);*/
+        /*transform-origin: top;*/
+    }
+
+    .father{
+        width:300px;
+        height:300px;
+        background: pink;
+        margin:20px auto;
+        display: flex;
+        transition: transform 3s;
+
+        /*transform-origin: left;*/
+        /* 转换样式控制，控制父盒子中的子盒子是否也具有3D效果 flat ：平面的*/
+        /*transform-style: flat;*/
+        transform-style:preserve-3d;
+    }
+    .father:hover{
+        transform: rotateY(180deg) translateZ(300px);
+    }
+    .son{
+        margin:auto;
+        width:100px;
+        height:100px;
+        transform: rotateY(30deg);
+        background: purple;
+    }
+    
+</style>
+<body>
+<div class="box">
+    <img src="images/2.jpg" alt="">
+</div>
+<div class="father">
+    <div class="son"></div>
+</div>
+</body>
+</html>

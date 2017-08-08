@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>json和字符串转换</title>
+</head>
+<script>
+    var str='{"name":"张翠山","job":"武当"}';
+//    var data={"name":"张三丰","job":"太极拳老师"}
+        window.onload=function () {
+//        转换函数
+            var data=JSON.parse(str);
+        var div=document.getElementById("box");
+        div.innerHTML=data.name;
+        console.log(data.name)
+//            遍历json 或者对象使用for(var a in obj)
+            for(var k in data){
+                console.log("k="+k);
+                console.log(data[k]);
+            }
+
+    };
+</script>
+<body>
+<div id="box"></div>
+</body>
+</html>

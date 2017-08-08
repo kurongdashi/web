@@ -1,0 +1,23 @@
+{
+  "errNum": 0,
+  "errMsg": "success",
+  "retData": {
+    "city": "\u63a5\u53e3\u5df2\u7ecf\u505c\u7528",
+    "pinyin": "apistore.baidu.com",
+    "citycode": "000000000",
+    "date": "201616-05-12",
+    "time": "10:00",
+    "postCode": "0000000",
+    "longitude": 0,
+    "latitude": 0,
+    "altitude": "0",
+    "weather": "\u591a\u4e91",
+    "temp": "0",
+    "l_tmp": "0",
+    "h_tmp": "0",
+    "WD": "\u5317\u98ce",
+    "WS": "\u63a5\u53e3\u5df2\u7ecf\u505c\u7528\uff0c\u8bf7\u8bbf\u95eeAPIStore.baidu.com\u67e5\u627e\u5bf9\u5e94\u63a5\u53e3",
+    "sunrise": "00:00",
+    "sunset": "00:00"
+  }
+}

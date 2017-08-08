@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>京东图片展示</title>
+</head>
+<style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    .box{
+        margin:100px;
+        width: 200px;
+        height:200px;
+        position: relative;
+    }
+    .samll{
+        width: 200px;
+        height:200px;
+        position: relative;
+        width:200px;
+        border: 1px solid #ccc;
+    }
+    .samll .flag{
+        display: none;
+        position: absolute;
+        width: 50px;
+        height:50px;
+        background-color: rgba(255,255,0,0.4);
+        top:0;
+        left:0;
+    }
+    .samllImg{
+        width:100%;
+    }
+    .big{
+        overflow: hidden;
+        /*display: none;*/
+        position: absolute;
+        width: 400px;
+        height:400px;
+        border: 1px solid #ccc;
+        left:270px;
+        top:0;
+    }
+    .big_box{
+        position: relative;
+    }
+    bigImg{
+        position: absolute;
+        left:0px;
+        top:0;
+    }
+
+</style>
+<body>
+<div class="box" id="all">
+    <div class="samll">
+        <img src="img/a.jpg" alt="" class="samllImg">
+        <div class="flag"></div>
+    </div>
+    <div class="big">
+        <div class="big_box">
+        <img src="img/b.jpg" alt="" class="bigImg">
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    var all=document.getElementById("all");
+    var samll=all.children[0];
+   var flag= samll.children[1];
+    var big=all.children[1];
+    var bigImg=big.children[0];
+
+    samll.onmouseover=function (e) {
+        flag.style.display="block";
+        big.style.display="block";
+    }
+    samll.onmouseout=function (e) {
+        flag.style.display="none";
+        big.style.display="none";
+    }
+    samll.onmousemove=function (e) {
+//        获取鼠标在盒子内的坐标位置
+//        samll.offsetLeft 无法获取，英文其父盒子已经定位
+        var x=parseInt(e.clientX)-all.offsetLeft-flag.offsetWidth/2;
+        var y=parseInt(e.clientY)-all.offsetTop-flag.offsetHeight/2;
+//        console.log("x="+x);
+        console.log("all.offsetLeft="+all.offsetLeft+":"+"samll.offsetLeft="+samll.offsetLeft)
+//      移动黄色盒子
+        if (x<0){
+            x=0;
+        }
+        else if(x>samll.offsetWidth){
+            x=samll.offsetWidth;
+        }
+        if(y<0){
+            y=0;
+        }
+        else if(y>samll.offsetHeight){
+            y=samll.offsetHeight;
+        }
+        flag.style.left=x+"px";
+        flag.style.top=y+"px";
+
+        bigImg.style.left=-x*2+"px";
+        bigImg.style.top=-y*2+"px";
+
+
+    }
+</script>
+</html>

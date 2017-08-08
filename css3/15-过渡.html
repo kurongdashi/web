@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>过渡动画</title>
+</head>
+<style>
+    .box{
+        width:200px;
+        height:200px;
+        background: pink;
+        background-image: url(images/green.jpg);
+        background-repeat:no-repeat;
+        position: absolute;
+        left: 10px;
+        /*transition:过渡能把盒子的属性改变，在一个时间上执行过渡 ，单向执行的不能往复*/
+        /* transition 是个合成属性*/
+        transition: all 4s;
+        background-size:10%;
+        /*那个属性要过渡*/
+        /*transition-property: left;*/
+        /*延时*/
+        /*transition-delay: 3s;*/
+        /*速度曲线*/
+        /*transition-timing-function: ease;*/
+    }
+
+    /* 过渡必须要一个手动触发事件 hover click，才可以，而动画可以直接执行，不需要手动触发事件*/
+    .box:hover{
+        /*left: 1000px;*/
+        background-size:100%;
+
+    }
+</style>
+<body>
+<div class="box"></div>
+</body>
+</html>

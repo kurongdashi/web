@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>伸缩布局-对子元素的调整</title>
+</head>
+<style>
+    .box{
+        width:1000px;
+
+    }
+    .box ul{
+        /*1、指定盒子为伸缩盒子*/
+        display: flex;
+        list-style: none;
+        /*2、指定布局方向*/
+        /* flex-direction: column;*/
+        /* 垂直方向排列，顺序反向*/
+        /*flex-direction: column-reverse;*/
+        flex-direction: row;
+
+    }
+    ul li{
+        margin:10px;
+        width:200px;
+        height:200px;
+        text-align: center;
+        line-height:200px;
+        background: pink;
+    }
+    /*指定每个子元素的权重*/
+    ul li:nth-child(1){
+        flex:1;
+    }
+    ul li:nth-child(2){
+        flex:2;
+    }
+    ul li:nth-child(3){
+          flex:1;
+      }
+    ul li:nth-child(4){
+        flex:1;
+    }
+
+</style>
+<body>
+<div class="box">
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全选和反选</title>
+</head>
+<script>
+    function select(str) {
+        var texts=getElements();
+       switch (str){
+           case  "all":
+               for(var i=0;i<texts.length;i++){
+                  if(!texts[i].checked){
+                      texts[i].checked=true;
+                  }
+               }
+           break;
+           case  "reverse":
+               for(var i=0;i<texts.length;i++){
+                   if(texts[i].checked){
+                       texts[i].checked=false;
+                   }else{
+                       texts[i].checked=true;
+                   }
+               }
+               break;
+           case  "cancel":
+               for(var i=0;i<texts.length;i++){
+                   if(texts[i].checked){
+                       texts[i].checked=false;
+                   }
+               }
+               break;
+       }
+        
+    }
+    function getElements() {
+        var ps=document.getElementsByTagName("input")
+        return ps;
+    }
+</script>
+<body>
+<button onclick="select('all')">全选</button>
+<button onclick="select('reverse')">反选</button>
+<button onclick="select('cancel')">取消选中</button>
+<div>
+    <p>选择：<input type="checkbox"></p>
+    <p>选择：<input type="checkbox"></p>
+    <p>选择：<input type="checkbox"></p>
+    <p>选择：<input type="checkbox"></p>
+    <p>选择：<input type="checkbox"></p>
+    <p>选择：<input type="checkbox"></p>
+    <p>选择：<input type="checkbox"></p>
+</div>
+</body>
+</html>

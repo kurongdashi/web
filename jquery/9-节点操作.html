@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+//   ------------------在div里面----------------
+//        1、将容器里添加一个元素
+        $("button").eq(0).click(function () {
+            $("div").append("<a href='http://www.baidu.com'>点击去百度</a>");
+        });
+//        在原来的基础上，往前面添加
+        $("button").eq(2).click(function () {
+            $("<a href='http://www.sina.com'>添加到前面的新浪</a>").prepend($("div"));
+        });
+// --------------------在div外面------------------------------
+        $("button").eq(3).click(function () {
+            $("div").after("<a href='http://www.sina.com'>外面添加在div之后</a>")
+        });
+
+        $("button").eq(4).click(function () {
+            $("div").before("<a href='http://www.sina.com'>外面添加在div之前</a>")
+        });
+//        下面的这两种方式类似带TO和不带to的方式
+//        $("button").eq(5).click(function () {
+//            $("<a href='http://www.sina.com'>外面添加在div之前</a>").insertBefore($("div"));
+//        });
+//        $("button").eq(6).click(function () {
+//            $("<a href='http://www.sina.com'>外面添加在div之前</a>").insertAfter($("div"));
+//        });
+//        ===============删除节点====================
+        $("button").eq(7).click(function () {
+//            删除节点，可以把自己删除
+            $("div").remove();
+        });
+        $("button").eq(8).click(function () {
+//            只能清空容器外的节点，容器还在
+//            $("div").empty();
+            $("div").html();
+        });
+
+// -------------------复制节点------------------------------
+        $("button").eq(9).click(function () {
+//
+            $("div").append($(".span").clone());
+//         clone 参数为true会把节点的事件也copy
+//            $("div").append($(".span").clone(true));
+        });
+//        $("button").eq(10).click(function () {
+//            $(".span").wrap($("div"))
+//        });
+        $("button").eq(11).click(function () {
+//            替换的必须写一个完整的节点 "<a href='http://www.sina.com'>外面添加在div之前</a>"
+            $(".span").replaceWith($("<a href='http://www.sina.com'>外面添加在div之前</a>"));
+        });
+    });
+</script>
+<body>
+
+<button>在div里追加节点append</button>
+<button>在div里追加节点appendto</button>
+<button>在前面添加节点previous</button>
+
+<button>在div外面添加一个节点after</button>
+<button>外面添加在div之前</button>
+
+<button>在div外面添加一个节点after</button>
+<button>外面添加在div之前</button>
+
+<button>删除节点</button>
+<button>清空容器</button>
+
+<button>复制节点</button>
+<button>包裹节点</button>
+<button>替换节点</button>
+
+<div class="div">
+    <span class="in">网站导航</span>
+</div>
+    <span class="span">div外面的span</span>
+</body>
+</html>

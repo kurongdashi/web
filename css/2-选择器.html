@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>选择器</title>
+	<style type="text/css">
+		/*标签选择器*/
+		a{
+			color: red;
+		}
+		/*id选择器,id 唯一性*/
+		#id{
+			color: blue;
+		}
+		/*类选择器，
+		1、类可以重复，多个标签同一个类选择器
+
+		2、同一个标签同时选择多个类选择器 class="c d" ,不允许有2个class属性出现在同一个标签中
+
+		3、千万不要把类像id选择器那样，一个标签写一个类选择器，
+		应该是原子性的类，相互组合 class=“ a b c d ...“,类型代码的复用性
+		4、id选择器一般不使用，因为id是js使用的
+		5、当一个标签携带多个类，如果有冲突，在style标签中谁在后面的覆盖前面的，和body标签里的写的顺序无关
+
+			
+		*/
+		.c{
+			color: red;
+		}
+		.d{
+			text-decoration: underline;
+		}
+
+	</style>
+<body>
+	<p class="c d">类选择器，重叠使用</p>
+</body>
+</html>

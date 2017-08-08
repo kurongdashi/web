@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原始的ajax</title>
+</head>
+<body>
+    <div id="show"></div>
+    <form>
+        姓名：<input type="text" name="username" id="name"><br>
+        密码：<input type="text" name="username" id="pass"><br>
+        <input type="button" value="提交" id="btn">
+    </form>
+</body>
+<script>
+window.onload=function () {
+//    window.location.href="http://www.baidu.com";
+    var btn=document.getElementById("btn")
+
+    btn.onclick=function () {
+        var name=document.getElementById("name").value;
+        var password=document.getElementById("pass").value;
+        mjax({
+//            ...
+        })
+    }
+
+
+//    原始ajax封装
+/*
+ data={url:"wwww.baidu.com",
+       type:"get/post",
+       sendData:"",
+       async:"true/false",
+       success:"function(data){}",
+        error:"function(){}"
+ };
+  */
+    function mjax(data) {
+
+        var xhr=null;
+        if (window.XMLHttpRequest){
+            xhr=new XMLHttpRequest();
+        }else{
+            xhr=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+//        先判断请求类型才能确定url 和发送数据格式
+        var type=data.type=="get"?"get":"post";
+
+        var url=data.url;
+
+        var sendData=null
+        if (type=="post"){
+            xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+            sendData=data.data;
+        }else if (type=="get"){
+//            为了不使用缓存，后面加上时间戳
+             url=url+"?"+data.data+"_"+new Date().getTime();
+        }
+//        get请求时 传递的URL
+        var flag=data.async=="true"?"true":"false";
+
+        xhr.open(type,url,flag);
+        xhr.send(sendData);
+        xhr.onreadstatechange=function (e) {
+            if(xhr.readyState==4){
+                if(xhr.status ==200){
+                    // 如果传人的success是一个函数
+                    if (typeof data.success =="function"){
+//                        判断数据类型后获取数据
+                        var d=data.dataType=="xml"?xhr.responseXML:xhr.responseText;
+//                        并且把数据传人success方法调用
+                        data.success(d);
+                    }
+
+                }else{
+                    if (typeof data.error =="function"){
+
+                        data.error(e);
+                    }
+                }
+            }
+        }
+
+    }
+
+}
+</script>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>饼状图</title>
+</head>
+<body>
+<div id="container"></div>
+</body>
+<script src="libs/konva/konva.js"></script>
+<script src="arc.js"></script>
+<script>
+    var data=[
+        {
+            color:"red",
+            ratio:0.1,
+            title:"大学一学生"
+        },
+        {
+            color:"green",
+            ratio:0.2,
+            title:"大学二学生"
+        },
+        {
+            color:"blue",
+            ratio:0.1,
+            title:"大学三学生"
+        },
+        {
+            color:"purple",
+            ratio:0.2,
+            title:"大学四学生"
+        },
+        {
+            color:"orange",
+            ratio:0.2,
+            title:"研一"
+        },
+        {
+            color:"lightgreen",
+            ratio:0.1,
+            title:"研二"
+        },
+        {
+            color:"gold",
+            ratio:0.1,
+            title:"研三"
+        },
+    ];
+
+    var stage=new Konva.Stage({
+        container:"container",
+        width:window.innerWidth,
+        height:window.innerHeight
+    });
+    var layer=new Konva.Layer()
+
+    var cenX=stage.width()/2;
+    var cenY=stage.height()/2;
+    var radius=stage.width()/10;
+//    文字和圆心的距离
+    var d=radius+30
+    var startAngle=-90;
+    var wedgeGroup=new Konva.Group();
+    data.forEach(function (item,index) {
+        var wedge=new Konva.Wedge({
+            x:cenX,
+            y:cenY,
+            radius:radius,
+            rotation:startAngle,
+            angle:item.ratio*360,
+//            stroke:item.color,
+            fill:item.color,
+            name:"wedge"
+        });
+        var txtAngel=(startAngle*Math.PI/180)+item.ratio*Math.PI;
+        var text=new Konva.Text({
+            x:cenX+Math.cos(txtAngel)*d,
+            y:cenY+Math.sin(txtAngel)*d,
+            text:item.ratio*100+"%",
+            stroke:item.color
+        });
+
+        if(txtAngel*180/Math.PI>90&&txtAngel*180/Math.PI<270){
+            text.x(text.x()-text.width());
+        }
+
+        startAngle+=item.ratio*360;
+        layer.add(text);
+        layer.add(wedge);
+    });
+
+    layer.draw();
+    stage.add(layer);
+
+//    绘制完成后，准备动画
+        function animate(wedges,index) {
+
+            wedges[index].to({
+                angle:data[index].ratio*360,
+                duration:data[index].ratio*4,
+                onFinish:function () {
+                    index++;
+                    if(index=data.length){
+                        index=0;
+                        return;
+                    }
+                    animate(wedges,index);
+                }
+            });
+
+        }
+
+//content 表示包括空白区域
+    stage.on("contentClick",function () {
+        var wedges=layer.find(".wedge");
+
+        wedges.each(function (item,index) {
+            wedges[index].angle(0);
+        });
+        animate(wedges,0);
+    })
+
+
+
+
+
+
+</script>
+
+</html>

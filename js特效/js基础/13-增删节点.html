@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>增删节点</title>
+</head>
+<script>
+    window.onload=function () {
+        var body=document.getElementById("body")
+//       1 创建节点
+        var div=document.createElement("div");
+        var p=document.createElement("p");
+        div.innerHTML="这是个div";
+        p.innerHTML="这是个p";
+//       2 添加到父的后面
+         body.appendChild(div);
+//       3 添加到中间的任意位置,插入节点,可以参照,没有参照点则放最后
+        body.insertBefore(p,div);
+//       4 添加到最前面
+        body.removeChild(div);
+//        5 复制节点,参数如果为true，深层次复制，为false只负责此盒子不复制子节点（内容）,默认为false
+        body.appendChild(div.cloneNode(true));
+//        6 子找父添加子
+        body.parentNode.appendChild(body.cloneNode(true));
+
+    }
+</script>
+<body >
+<div id="body"></div>
+</body>
+</html>

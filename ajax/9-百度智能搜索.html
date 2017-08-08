@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>百度智能搜索</title>
+</head>
+<style>
+    ul{
+        list-style: none;
+    }
+</style>
+<body>
+
+<input type="text" id="in" >
+<input type="button" value="百度一下咯">
+<div>
+    <ul id="list">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+</body>
+<script src="jquery-3.1.1.js"></script>
+<script>
+    $(function () {
+       $("#in").keyup(function () {
+           var value=$(this).val();
+           var url="https://gsp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd="+value;
+//           console.log("value="+value);
+           queryResult(url);
+       });
+
+       function queryResult(url) {
+            $.ajax({
+                url:url,
+                type:"get",
+                jsonp:"cb",
+                async:"true",
+                dataType:"jsonp",
+                success:function(data){
+                    paraser(data);
+
+                },error:function (e) {
+
+                }
+
+            })
+       }
+
+       function paraser(data) {
+           var ul=$("#list");
+            var arry=data.s;
+           for (var i=0;i<arry.length;i++){
+//               var li=$("<li>"+arry[i]+"</li>");
+//               ul.append(li);
+               $("li")[i].innerHTML=arry[i];
+           }
+
+       }
+
+    });
+</script>
+</html>

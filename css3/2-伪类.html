@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>伪类</title>
+</head>
+<style>
+/*  xx:first-child 表示相对父级下所有元素的，第一个元素*/
+	dt:first-child{
+		/*color: red;*/
+	}
+	dd:first-child{
+		/*color:red;*/
+	}
+	/* xx:first-of-type  表示相对父级下 xx 类型的第一个*/
+	dd:first-of-type{
+		/*color: #00AA91;*/
+	}
+	/* xx:nth-of-type(1)  表示xx类型的第几个元素*/
+	dd:nth-of-type(2){
+		/*color: darkred;*/
+	}
+	/*  xx:last-child 找父级下的所有元素的最后一个*/
+	span:last-child{
+		/*color: red;*/
+	}
+	/* xx:nth-child(2) 找父级下的第2个元素，必须对应 xx 标签 否则无法选中 */
+	dd:nth-child(3){
+		/*color: red;*/
+	}
+	dt:nth-child(1){
+		/*color: red;*/
+	}
+	span:nth-child(7){
+		/*color: red;*/
+	}
+	dd:nth-of-type(1){
+		/*color: red;*/
+	}
+	/* 选择空标签*/
+	dd:empty{
+		height:30px;
+		width: 110px;
+		background:  red;
+	}
+	/* 主要可以被点击的标签,被点击时*/
+	dd:target{
+		/*color: red;*/
+	}
+	/* 选择器里可以写一个表达式 此处选中前2  括号里的值必须>=1 */
+	dd:nth-child(-n+3){
+		/*color: red;*/
+	}
+	/*--------------利用伪元素追加伪内容，伪元素没有标签--------------*/
+	dd:last-child p:after{
+		/*content: '追加';*/
+	}
+	/* 文本选中*/
+	dd:nth-child(2) span::selection{
+		color: red
+	}
+
+</style>
+<body>
+	<div class="calendar">
+		<dl>
+			<dt>
+			<span>一</span> 
+			<span>二</span> 
+			<span>三</span> 
+			<span>四</span> 
+			<span>五</span> 
+			<span>六</span>
+			<span>日</span>
+			</dt>
+			<dd>
+			<span>1</span> 
+			<span>2</span> 
+			<span>3</span> 
+			<span>4</span> 
+			<span>5</span> 
+			<span>6</span>
+			<span>7</span>
+			</dd>
+			<dd>
+			<span>8</span> 
+			<span>9</span> 
+			<span>10</span> 
+			<span>11</span> 
+			<span>12</span> 
+			<span>13</span>
+			<span>14</span>
+			</dd>
+			<dd>
+				<span>15</span>
+				<span>16</span>
+				<span>17</span>
+				<span>18</span>
+				<span>19</span>
+				<span>20</span>
+				<span>21</span>
+			</dd>
+			<dd></dd>
+			<dd>
+				<p></p>
+				<a href="#">demo1</a>
+				<a href="#">demo2</a>
+				<a href="#">demo3</a>
+			</dd>
+		</dl>
+	</div>
+</body>
+</html>

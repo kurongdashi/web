@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>target使用</title>
+</head>
+<style>
+    /*
+        target 必须结合a标签使用，a的href="#xxx",#xxx代表下面某个标签的id，当被选中时，会加载 :target{} css样式
+     */
+    :target{
+        background-color: blue;
+    }
+
+</style>
+<body>
+
+<p ><a href="#aa1">点击凸显当前target指定的标签</a></p>
+<p ><a href="#aa2">点击凸显当前target指定的标签</a></p>
+<p id="aa1">使用target点击</p>
+<p id="aa2">使用target点击</p>
+</body>
+</html>

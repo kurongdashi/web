@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>过渡动画</title>
+</head>
+<style>
+    .box{
+        width:200px;
+        height:200px;
+        background: pink;
+        /* 动画可以反向执行，而且无限循环执行*/
+
+        /*要执行的动画的名字*/
+        animation-name: change;
+        animation-duration: 4s;
+        /* infinite:无穷的 iteration：重复循环*/
+        animation-iteration-count: infinite;
+        /*动画执行方向，交替变化 alternate 交替 */
+        animation-direction: alternate;
+        /* 动画结束后的状态 forwards 保持结束时的状态, backwards 开始前状态*/
+        animation-fill-mode:forwards;
+        /*animation-delay: 1s;*/
+        /*animation-play-state: ;*/
+    }
+    /*动画可以自己定义盒子要改变的属性，宽，高，颜色 等等*/
+    @keyframes change {
+         0%{
+             width:300px;
+         }
+        100%{
+            width:400px;
+            height: 400px;
+        }
+
+    }
+</style>
+<body>
+<div class="box"></div>
+</body>
+</html>

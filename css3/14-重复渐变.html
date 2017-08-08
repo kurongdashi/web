@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>背景图的渐变</title>
+</head>
+<style>
+    body{
+        background: #e1e1e1;
+    }
+    .box1{
+        width:1000px;
+        margin:100px auto;
+
+    }
+    .box1 .item{
+        float: left;
+        display: flex;
+        margin-right:30px;
+        margin-bottom: 30px;
+        width:200px;
+        height:200px;
+        background: #fff;
+        padding:10px;
+        box-shadow:3px 2px 6px #333333 ;
+
+    }
+    .item .gradient{
+        margin:auto;
+        width:180px;
+        height:30px;
+    }
+    .item:nth-child(1) .gradient{
+        background-image:repeating-linear-gradient(135deg,yellow 10%,green 30%);
+
+    }
+    .item:nth-child(2) .gradient{
+        width:180px;
+        height:180px;
+        background-image: repeating-radial-gradient(yellow 10%,green 40%);
+    }
+    /*渐变的应用*/
+    .item:nth-child(3) .gradient{
+        border-radius: 6px;
+        background-image:linear-gradient(to top,yellow,green);
+
+    }
+    /*渐变的应用球*/
+    .item:nth-child(4) .gradient{
+        width:180px;
+        height:180px;
+        border-radius: 50%;
+        background-image:radial-gradient(120px at 50px 50px,yellow,green);
+    }
+        /*线性渐变应用，进度条*/
+    .item:nth-child(5) .gradient{
+        background-color: #fff;        //
+        background-image: linear-gradient(135deg,blue 25%, green 25% ,green 50%,blue 50%,blue 75%,green 75% ,green 100%);
+        background-size:40px 40px;
+        /*background-repeat:no-repeat;*/
+
+
+    }
+    .item:nth-child(6) .gradient{
+    }
+</style>
+<body>
+<div class="box1">
+
+    <div class="item">
+        <div class="gradient"></div>
+    </div>
+    <div class="item">
+        <div class="gradient"></div>
+    </div>
+    <div class="item">
+        <div class="gradient">按钮</div>
+    </div>
+    <div class="item">
+        <div class="gradient"></div>
+    </div>
+    <div class="item">
+        <div class="gradient"></div>
+    </div>
+    <div class="item">
+        <div class="gradient"></div>
+    </div>
+    <div class="item">
+        <div class="gradient"></div>
+    </div>
+
+</div>
+</body>
+</html>

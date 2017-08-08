@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>konva框架</title>
+</head>
+<body>
+<div id="container"></div>
+</body>
+<script src="libs/konva/konva.js"></script>
+<script>
+    var stage=new Konva.Stage({
+//        设置舞台，尺寸，和容器
+        container:"container",//这里传容器的id
+        width:window.innerWidth,
+        height:window.innerHeight
+    });
+//    创建层，层里的内容由后面添加
+    var layer=new Konva.Layer();
+//    层添加到舞台
+    stage.add(layer);
+
+      var rect=new Konva.Rect({
+          x:100,
+          y:100,
+          width:100,
+          height:100,
+          opacity:0.5,
+          rotation:45,
+          fill:"purple",
+          draggable:true
+
+      });
+//      将要绘制的图像，添加到图层
+      layer.add(rect);
+//      将图层显示
+    layer.draw();
+
+
+</script>
+</html>

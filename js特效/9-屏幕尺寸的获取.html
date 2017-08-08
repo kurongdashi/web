@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>屏幕尺寸获取</title>
+</head>
+<body>
+
+</body>
+<script src="jquery-3.1.1.js"></script>
+<script>
+    <!--屏幕尺寸改变监听-->
+
+    $(window).resize(function () {
+        console.log(size().width)
+    });
+    function size() {
+        //        一般浏览器，ie9
+        if(window.innerWidth!=null){
+            return{
+                width:window.innerWidth,
+                height:window.innerHeight
+            }
+//            有声明doctype的浏览器
+        }else if(document.compatMode=="CSS1Compat"){
+            return{
+                width:document.documentElement.clientWidth,
+                height:document.documentElement.clientHeight
+            }
+        }
+//        没有声明doctype的浏览器
+        return{
+            width:document.body.clientWidth,
+            height:document.body.clientHeight
+        }
+    }
+</script>
+</html>

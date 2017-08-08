@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>无缝轮播图</title>
+    <style> * {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    .banner {
+        width: 600px;
+        height: 300px;
+        border: 2px solid #ccc;
+        margin: 100px auto;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .img {
+        position: absolute;
+        top: 0;
+        left: 0
+    }
+
+    .img li {
+        float: left;
+    }
+
+    .num {
+        position: absolute;
+        bottom: 10px;
+        width: 100%;
+        text-align: center;
+        font-size: 0;
+    }
+
+    .num li {
+        width: 10px;
+        height: 10px;
+        background: rgba(0, 0, 0, 0.5);
+        display: block;
+        border-radius: 100%;
+        display: inline-block;
+        margin: 0 5px;
+        cursor: pointer;
+    }
+
+    .btn {
+        display: none;
+    }
+
+    .btn span {
+        display: block;
+        width: 50px;
+        height: 100px;
+        background: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        font-size: 40px;
+        line-height: 100px;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .btn .prev {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        margin-top: -50px;
+    }
+
+    .btn .next {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        margin-top: -50px;
+    }
+
+    .num .active {
+        background-color: #fff;
+    } </style>
+    <script src="http://apps.bdimg.com/libs/jquery/1.8.3/jquery.min.js"></script>
+</head>
+<body>
+<div class="banner">
+    <ul class="img">
+        <li><a href="#"><img src="images/1.png" alt="第1张图片"></a></li>
+        <li><a href="#"><img src="images/2.png" alt="第2张图片"></a></li>
+        <li><a href="#"><img src="images/3.png" alt="第3张图片"></a></li>
+        <li><a href="#"><img src="images/4.png" alt="第4张图片"></a></li>
+        <li><a href="#"><img src="images/5.png" alt="第5张图片"></a></li>
+    </ul>
+    <ul class="num"></ul>
+    //
+    <div class="btn">
+        <span class="prev"><</span> <span class="next">></span>
+    </div>
+</div>
+
+</body>

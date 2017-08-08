@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象-绘制序列帧动画</title>
+</head>
+<body>
+<canvas width="400" height="400" id="cav"></canvas>
+<img id="img" width="400" height="400">
+</body>
+<script src="sprite.js"></script>
+<script>
+    (function () {
+        var canvas=document.getElementById("cav")
+        var img=document.getElementById("img")
+        canvas.style.border="1px solid #333";
+        var ctx=canvas.getContext("2d");
+        var rect=new sprite({
+            x:100,
+            y:100,
+            w:100,
+            h:100,
+            color:"blue",
+            alpha:1,
+            scaleX:2,
+            scaleY:2,
+            fillColor:"green",
+            rotate: 0
+        });
+        rect.draw(ctx);
+
+
+//        将canvas转换成图片,在内存中以base64编码的图片格式
+        img.src=canvas.toDataURL("image/png",1);
+
+    }());
+</script>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象</title>
+</head>
+<body>
+
+</body>
+<script>
+    (function () {
+
+//        1、闭包，在一个函数中将另一个函数返回,闭包函数变量==window.var
+        function a(name) {
+            this.name="诸葛亮";
+            return function () {
+                alert(this.name);
+                console.log(name)
+            }
+        }
+
+        var b=a("张飞");
+        b();
+        console.log("window.name="+window.name);
+//      2、函数即对象
+       function person() {
+           this.name="诸葛亮";
+           this.skill="八卦阵";
+       }
+//      1.每个函数，都有一个prototype对象（原形即父类）,所有this.属性，会在prototype对象中
+       person.prototype.age=33;
+//        原形中方法都是固定的
+        person.prototype.show=function () {
+            console.log(this.name);
+        }
+//      2.new fn()原理：如果new fn(),会先创建一个空对象object(),将fn()中的this指向object(),把object()的原形对象prototype,指向fn()原形对象
+//        如果fn()中没有return，则返回空对象，这样空对象实际关联fn()
+       var p=new person();
+       p.show();
+//      3.对象可以直接创建属性,不属于原形对象
+        p.job="军师";
+       console.log(p.age);
+       console.log("职业="+p.job);
+        var p1=new person();
+        console.log("p1职业="+p1.job);
+//        4、对象里面的函数，直接存放在原形对象里，
+
+//        5、  javascript中的异类：函数提前编译，变量提前到函数后面声明。
+    (function () {
+        add();
+        var c=1;
+        function add() {
+            console.log("c="+c);
+//            var c=2;// 会在函数内预解析时 会先声明 var c;
+        }
+
+    }())
+// 6. 如果构造函数中返回的不是一个对象，则不会覆盖原来的属性
+        function add() {
+            this.name="haha";
+            return "xixi";
+
+        }
+        var a=new add();
+        console.log("name="+a.name);
+
+
+
+    }());
+</script>
+</html>

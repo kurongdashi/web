@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象的规范写法</title>
+</head>
+<body>
+
+</body>
+<script>
+    (function () {
+
+//      1.对象的规范
+       function person(param) {
+           this._init(param);
+       }
+       person.prototype={
+           _init:function (param) {
+              this.name=param.name;
+              this.age=param.age;
+           },
+           show:function ( ) {
+                console.log("my name="+this.name)
+           }
+
+       }
+        var p=new person({
+            name:"张果老",
+            age:108
+        })
+        p.show();
+
+    }());
+
+    //  2.this的理解
+    function aaa(){
+            console.log(this);
+
+    }
+    aaa();//其实就是window.a(); this就是window
+    window.aaa();
+
+</script>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绘制图片</title>
+</head>
+<body>
+<canvas width="500" height="500" id="cav"></canvas>
+</body>
+<script>
+    (function () {
+        var canvas=document.getElementById("cav")
+        var ctx=canvas.getContext("2d")
+        var img= new Image();
+        var img2= new Image();
+        img2.src="img/gf.png";
+        img.src="img/a.jpg";
+//        必须，图片加载完成
+        img.onload=function () {
+//            ctx.drawImage(img,100,100);
+        }
+        img2.onload=function () {
+//            参数说明：要剪裁的图片的左上角坐标，图片尺寸，要绘制的坐标，图片设置宽高
+            ctx.drawImage(img2,0,0,178,178,200,200,178,178);
+        }
+
+    }());
+</script>
+</html>

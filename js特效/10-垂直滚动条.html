@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>垂直滚动条</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .all{
+        margin-top:100px;
+        margin-left:100px;
+    }
+    .box{
+        width: 100px;
+        height:300px;
+        overflow: hidden;
+        float: left;
+        position: relative;
+    }
+    .content{
+        position: absolute;
+        background-color: pink;
+
+    }
+    .slide{
+        width:20px;
+        height:300px;
+        background-color: #eee;
+        float: left;
+        position: relative;
+    }
+    .block{
+        width: 20px;
+        height: 100px;
+        background-color: red;
+        border-radius: 10px;
+        position: absolute;
+        top: 0;
+    }
+</style>
+<body>
+<div class="all">
+    <div class="box">
+        <div class="content">
+        文本内容区域文本内容区域文本内容区域文本内容区域 文本内容区域文本内容区域文本内容区域文本内容区域文本内容区域 文本内容区域文本内容区域文本内容区域文本内容区域文本内容区域 文本内容区域
+        文本内容区域文本内容区域文本内容区域文本内容区域 文本内容区域文本内容区域文本内容区域文本内容区域文本内容区域 文本内容区域文本内容区域文本内容区域文本内容区域文本内容区域 文本内容区域
+        文本内容区域文本内容区域文本内容区域文本内容区域 文本内容区域文本内容区域文本内容区域文本内容区域文本内容区域 文本内容区域文本内容区域文本内容区域文本内容区域文本内容区域 文本内容区域
+    </div>
+    </div>
+    <div class="slide">
+        <div class="block"></div>
+    </div>
+</div>
+</body>
+<script src="jquery-3.1.1.js"></script>
+<script>
+    $(function () {
+//        1、计算滚动条的高度， 滚动条高/容器的高=容器高/内容高度
+        var cth=$(".content").height();//内容高
+        var bxh=$(".box").height();//容器高
+        var n=bxh/cth;//比率
+        var blh=bxh*n;
+        $(".block").css("height",blh+"px");
+//        ---------------2、拖动滚动条-------------------------
+        var down=false;
+        $(".block").mousedown(function (e) {
+
+            down=true;
+//          点击的y
+            var y1=e.clientY;
+            // 原来block 距离父盒子的top
+           var top=$(this).position().top
+            $(document).mousemove(function (e) {
+                if(down){
+//                    dy 是block在slide中的值0~bxh-blh
+                    var dy=e.clientY-y1+top;
+//                        限制条件
+                        if(dy<0){
+                            dy=0;
+                        }else if(dy>bxh-blh){
+                            dy=bxh-blh;
+                        }
+                    console.log("dy="+dy);
+                $(".block").css("top",dy+"px")
+//                    拖拽是不选中content内容区域
+                    window.getSelection()?window.getSelection().removeAllRanges():document.getSelection().empty();
+
+                  $(".content").css("top",-dy/n+"px")
+
+                }
+            });
+
+        });
+        $(document).mouseup(function () {
+            down=false;
+            console.log("2="+down)
+        });
+    });
+</script>
+</html>

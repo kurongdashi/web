@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绑定多个事件</title>
+</head>
+<script type="text/javascript" src="jquery-3.1.1.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+//-----------------一个元素绑定多个事件------------------
+//        $("button").click(function () {
+//            alert($(this));
+//        });
+
+//        $("button").bind("click mouseenter", function () {
+//            alert("呵呵呵啊");
+//        });
+//        $("button").bind("click mouseenter", "aaa",function (e) {
+//            alert(e.data);
+//        });
+
+        $("button").bind(
+            {
+                "click": function () {
+                    alert("我是click");
+                }, "mouseenter": function () {
+                alert("我是mouseenter");
+            }
+            }
+        );
+//        解绑
+        $("button").unbind();
+
+//        ---------------多个元素同时绑定事件-----------------
+
+//    $("li").click(function () {
+//        alert($(this));
+//    });
+//   delegate 委托，子元素很多的情况下，使用委托给父
+        $("ul").delegate("li", "click", function () {
+            alert("呵呵呵啊");
+        });
+//      解绑
+        $("ul").undelegate();
+//------------------------on绑定事件早1.7版本后使用，建议使用-------------------------
+        $("button").on("click",function () {
+            alert("我是on绑定的事件");
+        });
+//        解绑
+        $("button").off();
+
+        $("button:eq(1)").on("click",function () {
+            var t= $("#text").val();
+            console.log("t="+t);
+            if (t==="1"){
+                alert("success")
+            }else{
+//                trigger 触发事件
+                $("#text").val("").trigger("focus");
+            }
+        });
+
+    });
+</script>
+
+<body>
+<button>绑定</button>
+<input  type="text" id="text">
+<button>提交</button>
+<ul>
+    <li>我是li1</li>
+    <li>我是li2</li>
+    <li>我是li3</li>
+    <li>我是li4</li>
+    <li>我是li5</li>
+    <li>我是li6</li>
+    <li>我是li7</li>
+    <li>我是li8</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>滚动顶部</title>
+</head>
+<style>
+    .right{
+        position: fixed;
+        width:100px;
+        height:100px;
+        background-color: pink;
+        right:100px;
+        bottom:100px;
+        display: none;
+    }
+    .show{
+        display: block;
+    }
+</style>
+<body>
+<div class="right">返回顶部</div>
+<div class="box">
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+    <p>这是内容部分，哈哈哈</p>
+</div>
+</body>
+<script src="jquery-3.1.1.js"></script>
+<script>
+$(function () {
+//    注册window的滚动事件
+    $(window).scroll(function () {
+//        文档对象获取滚动值
+        var top=$(document).scrollTop();
+        console.log(top);
+        if(top>0){
+            $(".right").addClass("show");
+        }else{
+            $(".right").removeClass("show");
+
+        }
+        $(".right").on("click",function () {
+//                窗体滚动到目标位置
+//            $(document).scrollTop(0);
+            $("body,html").animate({
+                "scrollTop":0
+            },function () {
+                $(this).stop(true,false);
+            })
+        });
+    });
+})
+</script>
+</html>

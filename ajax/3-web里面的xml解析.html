@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>web里的xml解析</title>
+</head>
+<body>
+    <button id="btn">点击显示</button>
+</body>
+<script>
+    window.onload=function () {
+        var btn=document.getElementById("btn");
+        var body=document.getElementsByTagName("body")[0];
+        btn.onclick=function () {
+           var xhr=null;
+            if (window.XMLHttpRequest){
+              xhr= new XMLHttpRequest();
+            }else{
+                xhr=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            var url="wen.xml";
+            xhr.open("get",url,true);
+            xhr.send(null);
+            xhr.onreadystatechange=function () {
+                if(xhr.readyState==4 && xhr.status==200){
+                    var data=xhr.responseXML;
+                   var bs=data.getElementsByTagName("books")[0];
+                    var books=bs.getElementsByTagName("book");
+                    for(var i=0;i<books.length;i++){
+                        var book=books[i];
+                        var title= book.getElementsByTagName("title")[0];
+                        var des= book.getElementsByTagName("des")[0];
+                        var price= book.getElementsByTagName("price")[0];
+
+                        var div=document.createElement("div");
+                        var p1=document.createElement("p");
+                        var p2=document.createElement("p");
+                        var p3=document.createElement("p");
+
+                        p1.innerHTML=title.innerHTML;
+                        p2.innerHTML=des.innerHTML;
+                        p3.innerHTML=price.innerHTML;
+
+                        div.appendChild(p1);
+                        div.appendChild(p2);
+                        div.appendChild(p3);
+                        body.appendChild(div);
+                    }
+                }
+            }
+        }
+    }
+</script>
+</html>

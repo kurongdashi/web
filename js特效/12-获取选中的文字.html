@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>点击空白隐藏盒子</title>
+</head>
+<style>
+    .box{
+        width: 300px;
+        height: 300px;
+        position: relative;
+    }
+    .dialog{
+        width: 100px;
+        height: 20px;
+        background-color:red;
+        display: none;
+        position: absolute;
+        z-index:2;
+
+    }
+</style>
+<body>
+<div class="dialog">复制</div>
+<div class="box" id="box">
+    IDC评述网（idcps.com）03月02日报道：根据百度统计的最新数据显示，在2016年2月国内浏览器市场上，霸主Chrome的份额延续上月上升趋势，增加1.98%，成功突破40%，达到40.62%。而亚军IE的份额则再次遭到蚕食，减少1.93%，降至31.81%。另外，搜狗高速排名下降，从第3滑至第5，与此同时，2345与QQ浏览器的排名各升1位，分获3、4名。接下来，请看IDC评述网整理的相关数据分析。
+</div>
+
+</body>
+<script src="jquery-3.1.1.js"></script>
+<script>
+    document.onmouseup=function (e) {
+        var txt=null;
+        if(window.getSelection()){
+            txt=window.getSelection().toString();
+        }else{
+            txt=document.selection.createRange().text;//ie
+        }
+        if(txt){
+            $(".dialog").css("top",e.clientY);
+            $(".dialog").css("left",e.clientX);
+            $(".dialog").css("display","block");
+        }
+        document.onclick=function (e) {
+            var targetId=e.target?e.target.id:e.srcElement.id;
+            if(targetId!="box"){
+                $(".dialog").css("display","none");
+            }
+        }
+    }
+</script>
+</html>

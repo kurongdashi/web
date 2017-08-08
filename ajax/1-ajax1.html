@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原始的ajax</title>
+</head>
+<body>
+    <div id="show"></div>
+    <form>
+        姓名：<input type="text" name="username" id="name"><br>
+        密码：<input type="text" name="username" id="pass"><br>
+        <input type="button" value="提交" id="btn">
+    </form>
+</body>
+<script>
+window.onload=function () {
+//    window.location.href="http://www.baidu.com";
+    var btn=document.getElementById("btn")
+
+    btn.onclick=function () {
+        var name=document.getElementById("name").value;
+        var password=document.getElementById("pass").value;
+
+//        console.log("username="+name+"&password="+password);
+        var xhr=null;
+        if (window.XMLHttpRequest){
+            xhr=new XMLHttpRequest();
+        }else{
+            xhr=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        var url="wo.php?username="+name+"&password="+password;
+//        get请求时 传递的URL
+        xhr.open("get",url,true);
+        xhr.onreadstatechange=function () {
+//            xhr.readyState 的状态 0 表示对象创建；1 表示准备完成；2；发送完成 ；3 服务器发送回来；4 可以使用数据了，
+//            xhr.status 200 表示成功
+            if(xhr.readyState==4){
+                if(xhr.status ==200){
+//                    获取返回的数据 为xml
+                      var data= xhr.responseXML;
+//                      返回的数据 为文本
+                      var data1=xhr.responseText;
+                }
+            }
+
+            document.getElementById("show").innerHTML="登录回调";
+        }
+//        send() 参数为post请求时，填写的参数 同时设置请求头
+//        xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
+        xhr.send(null);
+    }
+
+}
+</script>
+</html>

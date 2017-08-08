@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案例2</title>
+</head>
+<body>
+<div id="container"></div>
+</body>
+<script src="libs/konva/konva.js"></script>
+<script>
+    var  data=[{name:"福田",value:0.8,color:"red"},
+                {name:"龙华",value:0.5,color:"lightgreen"},
+                {name:"南山",value:0.6,color:"lightblue"},
+                {name:"宝安",value:0.2,color:"lightpink"},
+                {name:"罗湖",value:0.3,color:"purple"},
+                {name:"龙岗",value:0.7,color:"gold"}
+                ];
+
+    var stage=new Konva.Stage({
+        container:"container",
+        width:window.innerWidth,
+        height:window.innerHeight
+    });
+    var layer=new Konva.Layer()
+    stage.add(layer);
+    var cenX=stage.width()/2;
+    var cenY=stage.height()/2;
+
+//    起始点坐标
+    var x0=stage.width()*1/8;
+    var y0=stage.height()*3/4;
+//    表格的宽高尺寸
+    var tabW=stage.width()*3/4;
+    var tabH=stage.height()*1/2;
+//    底线
+   var line=new Konva.Line({
+       points:[x0,y0,x0+tabW,y0],
+       stroke:"lightgreen",
+       strokeWidth:1
+
+   });
+   layer.add(line);
+//  每个竖图，和空隙所占width
+   var blockW=tabW/data.length;
+//   竖图宽度
+   var dataW=blockW/2;
+
+   for(var i=0;i<data.length;i++){
+
+//       绘制柱状图
+       var tempX=x0+blockW*i+blockW*1/4;
+       var rect=new Konva.Rect({
+           x:tempX,
+           y:y0-data[i].value*tabH,
+           width:dataW,
+           height:data[i].value*tabH,
+           stroke:data[i].color,
+           fill:data[i].color,
+           cornerRadius:5,
+           opacity:0.9,
+           name:"rect"
+       })
+       layer.add(rect);
+
+//       绘制百分比文字
+       var textPercent=new Konva.Text({
+           x:x0+blockW*i,
+           y:y0-data[i].value*tabH-14,
+           fontSize:14,
+           width:blockW,
+           align:"center",
+           stroke:data[i].color,
+           text:data[i].value*100+"%",
+//           增加一个class ，类选择器percent
+           name:"percent"
+       })
+
+       layer.add(textPercent);
+//       绘制底部文字
+       var textBottom=new Konva.Text({
+           x:x0+blockW*i+blockW*1/2,
+           y:y0,
+           fontSize:14,
+           width:blockW,
+           rotation:30,
+           stroke:data[i].color,
+           text:data[i].name
+       })
+
+       layer.add(textBottom);
+
+   }
+    layer.draw();
+// 绘制完成后，准备动画
+   stage.on("contentClick",function () {
+
+        layer.find("Rect").each(function (item,index) {
+            item.y(y0);
+            item.height(0);
+//            to动画
+            item.to({
+                duration:1,
+                y:y0-data[index].value*tabH,
+                height:data[index].value*tabH
+            })
+
+        });
+       layer.find(".percent").each(function (item,index) {
+           item.y(y0);
+           item.to({
+               duration:1,
+               y:y0-data[index].value*tabH-16
+           })
+
+       });
+
+   })
+
+
+</script>
+</html>

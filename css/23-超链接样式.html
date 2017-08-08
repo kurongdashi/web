@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>链接的样式</title>
+	<style type="text/css">
+	/*
+	四种状态必须按照固定的顺序写
+	简称伪类
+
+	*/
+		/*1、没有访问过*/
+		a:link{
+			color: red;
+		}
+		/*2、访问过*/
+		a:visited{
+			color: green;
+		}
+		/*3、鼠标悬停*/
+		a:hover{
+			color: blue;
+			cursor: hand;
+		}
+		/*4、点击不松手*/
+		a:active{
+			color:yellow;
+		}
+
+	</style>
+</head>
+<body>
+<a href="http://www.baidu.com">去百度</a>
+	
+</body>
+</html>

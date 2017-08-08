@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>浮动的性质</title>
+</head>
+<style type="text/css">
+	/*
+	脱离标准流
+	1、float :属性脱离标准文档流;
+	一旦脱离标准文档流后，没有没有块和行内元素区分了。浮动的元素相互贴
+	2、浮动可以挡住盒子，但是不能挡不住盒子里的文字
+	
+
+	*/
+	.d1{
+		float: left;
+		width: 30px;
+		height: 30px;
+		background-color: blue;
+
+	}
+	.d2{
+		float: left;
+		width: 100px;
+		height: 100px;
+		background-color: green;
+
+	}
+</style>
+<body>
+	
+</body>
+<div class="d1"></div>
+<div class="d2"></div>
+<span>123文字爱的发生地方文字爱的发生地方文字爱的发生地方文字爱的发生地方文字爱的发生地方文字爱的发生地方</span>
+</html>

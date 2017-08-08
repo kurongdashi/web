@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绘制矩形</title>
+</head>
+<body>
+<canvas id="cav" width="500" height="500"></canvas>
+</body>
+<script>
+    var data=[
+        {
+            color:"red",
+            ratio:0.2,
+            title:"大学一学生"
+        },
+        {
+            color:"green",
+            ratio:0.3,
+            title:"大学二学生"
+        },
+        {
+            color:"blue",
+            ratio:0.4,
+            title:"大学三学生"
+        },
+        {
+            color:"purple",
+            ratio:0.1,
+            title:"大学四学生"
+        }
+    ];
+    (function () {
+        var canvas=document.getElementById("cav")
+        var ctx=canvas.getContext("2d");
+        ctx.lineWidth=1;
+        var color="";
+        //       圆心坐标，半径
+        var circleX=300;
+        var circleY=300;
+        var radius=100;
+
+//        默认开始角度
+        var startAngle=-Math.PI/2;
+        var endAngle=0;
+//        文字的x,y坐标
+        var textX=0;
+        var textY=0;
+//        文字距离圆的直线距离
+        var d=30;
+
+
+        for(i=0;i<data.length;i++){
+// -----------绘制图形------------
+            ctx.beginPath();
+            color=data[i].color
+            ctx.strokeStyle=color;
+            ctx.moveTo(circleX,circleY);
+//            数据所占弧度 360度==2*pi
+            var ratio=data[i].ratio;
+
+            var dataAngle=ratio*2*Math.PI;
+
+//           相对于圆心的第一象限，textX计算公式 x=圆心X+Math.cos()，在canvas坐标系中第一象限角度为0 ~ -90，所以所有的cos值为正数,x=圆心X+Math.cos()
+//           相对于圆心的第一象限，textY计算公式 y=圆心Y-Math.sin()，在canvas坐标系中第一象限角度为0 ~ -90，所以所有的sin值为负数,y=圆心Y+Math.sin()
+
+//           相对于圆心的第二象限，textX计算公式 x=圆心X-Math.cos()，在canvas坐标系中第二象限角度为-90 ~ -180，所以所有的cos值为负数,x=圆心X+Math.cos()
+//           相对于圆心的第二象限，textY计算公式 y=圆心Y-Math.sin()，在canvas坐标系中第二象限角度为-90 ~ -180，所以所有的sin值为负数,y=圆心Y+Math.sin()
+
+//           相对于圆心的第三象限，textX计算公式 x=圆心X-Math.cos()，在canvas坐标系中第三象限角度为90 ~ 180，所以所有的cos值为负数,x=圆心X+Math.cos()
+//           相对于圆心的第三象限，textY计算公式 y=圆心Y+Math.sin()，在canvas坐标系中第三象限角度为90 ~ 180，所以所有的sin值为正数,y=圆心Y+Math.sin()
+
+//           相对于圆心的第四象限，textX计算公式 x=圆心X+Math.cos()，在canvas坐标系中第四象限角度为0 ~ 90，所以所有的cos值为正数,x=圆心X+Math.cos()
+//           相对于圆心的第四象限，textY计算公式 y=圆心Y+Math.sin()，在canvas坐标系中第四象限角度为0 ~ 90，所以所有的sin值为正数,y=圆心Y+Math.sin()
+
+//            整理得：如下公式
+            var tempAngle=startAngle+dataAngle/2
+            textX=circleX+Math.cos(tempAngle)*(radius+d);
+            textY=circleY+Math.sin(tempAngle)*(radius+d);
+//            ctx.fillText(ratio*100+"%",textX,textY);//绘制实心线
+
+
+            if(tempAngle*180/Math.PI>90 && tempAngle*180/Math.PI<270){
+//                在左半轴，文字过长进入扇区
+//                ctx.textAlign="end";//文本对齐方式
+//            ctx.textBaseline="bottom";//文本基线设置
+            }
+            ctx.strokeText(ratio*100+"%",textX,textY);//绘制空心线
+//            计算结束角度
+            endAngle=startAngle+dataAngle;
+
+            ctx.arc(circleX,circleY,radius,startAngle,endAngle);
+            ctx.closePath();
+
+            ctx.fillStyle=color;
+            ctx.fill();
+            ctx.stroke();
+            startAngle+=dataAngle;
+
+
+
+
+
+        }
+
+
+    }());
+</script>
+</html>

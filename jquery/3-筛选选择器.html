@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="jquery-3.1.1.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+//        $().parent()
+//        兄弟选取器 siblings
+    $(".li3").siblings().css("color","blue")
+
+    });
+//    指向父盒子
+    $("li3").parent()
+//    指向子元素
+        $("ul").children()
+
+    </script>
+</head>
+<body>
+<ul>
+    <li>1好人</li>
+    <li>2好人</li>
+    <li class="li3">3好人</li>
+    <li>4好人</li>
+    <li>5好人</li>
+    <li>6好人</li>
+    <li>7好人</li>
+    <li>8好人</li>
+</ul>
+
+</body>
+</html>

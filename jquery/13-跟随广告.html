@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跟随广告</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+    .content{
+        height: 2222px;
+        background: #fdefde;
+    }
+        .left{
+            width:100px;
+            height: 200px;
+            position: absolute;
+            top: 80px;
+            float: left;
+            z-index: 1;
+            background: #00ff99;
+        }
+    .right{
+        width:100px;
+        height: 200px;
+        position: absolute;
+        top: 80px;
+        right: 0;
+        float: right;
+        z-index: 1;
+        background: #00ff99;
+    }
+    </style>
+</head>
+<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+<script  type="text/javascript">
+    $(document).ready(function () {
+
+        $(window).scroll(function () {
+//            被卷去的头部，也就是隐藏的头部高度
+           var top= $(document).scrollTop();
+
+           $(".left,.right").animate({
+            "top":top+80
+           },100);
+        });
+    });
+</script>        
+<body>
+<div class="content"></div>
+<div class="left"></div>
+<div class="right"></div>
+</body>
+</html>

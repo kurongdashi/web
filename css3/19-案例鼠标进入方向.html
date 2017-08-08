@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标进入方向</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background: #fff;
+    }
+
+    .box {
+        width: 1000px;
+        margin: 100px auto;
+        background: pink;
+    }
+
+    .box .list {
+        width: 250px;
+        height: 200px;
+        overflow: hidden;
+        border-radius: 15px;
+        float: left;
+        margin:20px;
+        position: relative;
+
+    }
+    .list div{
+        /*盒子之间相互掩盖，定位*/
+        position: absolute;
+        top:0;
+        left:0;
+        /* rotate() 参数是目的角度 */
+        transform: rotate(-100deg);
+        /*transform-origin: top left;*/
+        /* 给做动画的盒子做过渡*/
+        transition: transform 2s;
+    }
+    /* 给做动画的盒子做过渡*/
+    .current div{
+        transform: rotate(0deg);
+    }
+/* 每次鼠标进入和出去的方向不同，所以图片旋转的点定位不同*/
+    .top{
+         transform-origin: top left;
+     }
+    .right{
+        transform-origin: top right;
+    }
+    .left{
+        transform-origin: bottom left;
+    }
+    .bottom{
+        transform-origin: bottom right;
+    }
+</style>
+<script src="jquery-3.1.1.js"></script>
+<script>
+    $(function () {
+        $(".list").on("mouseenter mouseleave",function(e) {
+            var that=$(this);
+            var w = $(this).width(); // 得到盒子宽度
+            var h = $(this).height();// 得到盒子高度
+            var x = (e.pageX - this.offsetLeft - (w / 2)) * (w > h ? (h / w) : 1);
+            // 获取x值
+            var y = (e.pageY - this.offsetTop - (h / 2)) * (h > w ? (w / h) : 1);
+            // 获取y值
+            var direction = Math.round((((Math.atan2(y, x) * (180 / Math.PI)) + 180) / 90) + 3) % 4; //direction的值为“0,1,2,3”分别对应着“上，右，下，左”
+            // 将点的坐标对应的弧度值换算成角度度数值
+            var dirName = new Array('top', 'right', 'bottom', 'left');
+            if (e.type == 'mouseenter') {
+                switch (direction){
+                    case 0:
+                        comeOn("top");
+                        break;
+                    case 1:
+                        comeOn("right");
+                        break;
+                    case 2:
+                        comeOn("bottom");
+                        break;
+                    case 3:
+                        comeOn("left");
+                        break;
+                }
+            } else {
+                switch (direction){
+                    case 0:
+                        getOut("top");
+                        break;
+                    case 1:
+                        getOut("right");
+                        break;
+                    case 2:
+                        getOut("bottom");
+                        break;
+                    case 3:
+                        getOut("left");
+                        break;
+                }
+            }
+            //     根据进入的方向，设置图片的旋转点
+            function comeOn(str) {
+                that.addClass("current");
+                that.children("div").removeClass().addClass(str);
+            }
+            function getOut(str) {
+                that.removeClass("current");
+                that.children("div").removeClass().addClass(str);
+            }
+        });
+
+    });
+</script>
+<body>
+<div class="box">
+    <div class="list">
+        <img src="images/bg.jpg" alt="">
+        <div>
+            <img src="images/1.jpg" alt="">
+        </div>
+    </div>
+    <div class="list">
+        <img src="images/bg.jpg" alt="">
+        <div>
+            <img src="images/2.jpg" alt="">
+        </div>
+    </div> <div class="list">
+    <img src="images/bg.jpg" alt="">
+    <div>
+        <img src="images/3.jpg" alt="">
+    </div>
+</div>
+    <div class="list">
+        <img src="images/bg.jpg" alt="">
+        <div>
+            <img src="images/4.jpg" alt="">
+        </div>
+    </div>
+    <div class="list">
+        <img src="images/bg.jpg" alt="">
+        <div>
+            <img src="images/5.jpg" alt="">
+        </div>
+    </div>
+    <div class="list">
+        <img src="images/bg.jpg" alt="">
+        <div>
+            <img src="images/6.jpg" alt="">
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

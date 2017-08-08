@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>属性选择器</title>
+</head>
+<style>
+	/*  属性[ 判断属性条件] */
+/*  ~= 表示某个单独的属性 这个属性值用空格隔开*/
+	ul li[class~="a"] {
+		background: red;
+	}
+	/*  |= 表示某个属性,或者某个属性名为： text-xx */
+	ul li [class|="a"]{
+		background: green;
+	}
+	/*  *= 表示属性包涵某个字符*/
+	ul li [class*="-"]{
+		background: blue;
+	}
+	/*  ^= 表示属性以某个字符开头的*/
+	ul li [class^="-"]{
+		background: yellow;
+	}
+	/*  $= 表示属性以某个字符结尾的*/
+	ul li [class$="b"]{
+		background: gold;
+	}
+</style>
+<body>
+<ul>
+	<li class="a">1号嘉宾</li>
+	<li class="a b">2号嘉宾</li>
+	<li class="a b">3号嘉宾</li>
+	<li class="a-b-c">4号嘉宾</li>
+	<li class="cab">5号嘉宾</li>
+	<li>6号嘉宾</li>
+	<li>7号嘉宾</li>
+	<li>8号嘉宾</li>
+</ul>
+</body>
+</html>

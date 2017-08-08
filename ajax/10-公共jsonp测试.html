@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>公共jsonp测试</title>
+</head>
+<body>
+
+<input type="text" id="in" >
+<input type="button" value="百度一下咯" id="btn">
+<div id="box">
+</div>
+
+
+
+</body>
+<script src="jquery-3.1.1.js"></script>
+<script>
+    $(function () {
+    var box=$("#box");
+//        点击搜索
+    $("#btn").on("click",function () {
+        var title=$("#in").val();
+        var encodeTitle=encodeURIComponent(title);
+        var url="http://v.juhe.cn/movie/index?title="+encodeTitle+"&smode=&pagesize=&offset=&dtype=jsonp&key=cad8411f24a10c5a5539a1086b95c1c6";
+        $.ajax({
+            type:"get",
+            url:url,
+            dataType:"jsonp",
+            success:function (data) {
+                    parser(data);
+                    console.log(data);
+            },
+            error:function (e) {
+                box.html("没找到咯");
+            }
+
+        })
+
+    });
+//    解析数据，并填充到模板中
+    function parser(data) {
+        if (data.resultcode==200){
+            for (var i=0;i<data.result.length;i++){
+                var item=data.result[i];
+                var p=$("<p>"+item.genres+"</p>");
+                box.append(p);
+                var p1=$("<p>"+item.language+"</p>");
+                box.append(p1);
+                var h3=$("<h3>"+item.title+"</h3>");
+                box.append(h3);
+                var poster=$("<p><img src='"+item.poster+"'/></p>");
+                box.append(poster);
+                var writers=$("<p>"+item.writers+"</p>");
+                box.append(writers);
+                var directors=$("<p>"+item.directors+"</p>");
+                box.append(directors);
+                var actors=$("<p>"+item.actors+"</p>");
+                box.append(actors);
+                var plot_simple=$("<p>"+item.plot_simple+"</p>");
+                box.append(plot_simple);
+                var year=$("<p>"+item.year+"</p>");
+                box.append(year);
+                box.append("<hr/>")
+
+
+            }
+        }else{
+            box.html();
+        }
+    }
+
+        /**
+         * "resultcode":"200",
+         "reason":"成功的返回",
+         "result":[
+         {
+             "movieid":"231865",
+             "rating":"-1",
+             "genres":"动画\/动作\/奇幻",
+             "runtime":null,
+             "language":"汉语普通话",
+             "title":"西游记",
+             "poster":"http:\/\/img31.mtime.cn\/mg\/2016\/02\/06\/115149.42488982_270X405X4.jpg",
+             "writers":"凌纾",
+             "film_locations":"中国",
+             "directors":"方润南,周凤英",
+             "rating_count":"7",
+             "actors":"沈晓谦 Xiaoqian Shen,乔榛 Zhen Qiao,程玉珠 Yuzhu Cheng,刘风 Feng Liu",
+             "plot_simple":"总剧情 本部52集大型国产动画片根据经典名著《西游记》改编制作而成。唐僧带领徒弟孙悟空、猪八戒、沙和尚和白龙马，一行五人西天取经。路遇九九八十一难，终取得真经修成正果。动画片在大家耳熟能详的原型上，加入了诸多当代元素，与以往各种版本相比，更具时代特色。不仅保留了古典名著的精髓，更塑造出了家喻户晓的动画版师徒形象。 　　《西游记》是中 展开 本部52集大型国产动画片根据经典名著《西游记》改编制作而成。唐僧带领徒弟孙悟空、猪八戒、沙和尚和白龙马，一行五人西天取经。路遇九九八十一难，终取得真经修成正果。动画片在大家耳熟能详的原型上，加入了诸多当代元素，与以往各种版本相比，更具时代特色。不仅保留了古典名著的精髓，更塑造出了家喻户晓的动画版师徒形象。 　　《西游记》是中央电视台动画部和中国国际电视总公司火炬动画分公司联合投资、制作的，耗资巨大历时6年才大功告成。目前，动画版《西游记》已被翻译成英语、法语、西班牙语等多种外文版本。",
+             "year":"1999",
+             "country":"中国",
+             "type":null,
+             "release_date":"19990723",
+             "also_known_as":""
+         },
+         */
+
+    });
+</script>
+</html>

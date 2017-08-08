@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style type="text/css">
+	/*
+	清除浮动之间的影响：第二组浮动的元素会追尾第一组
+	
+	*/
+	*{
+		padding: 0px;
+		margin:0px;
+	}
+li{
+	 
+	 width: 50px;
+	 height: 30px;
+	background-color:yellow;
+	float:left;
+}
+.box1{
+	background-color:blue;
+}
+/*2、clear：both；+ 内隔墙法  但是盒子本身还是没有高度，所有盒子没有办法设置背景颜色*/
+.box2{
+	
+	clear: both;
+	background-color: pink;
+}
+.h10{
+	height: 10px;
+}
+</style>
+<body>
+	<div class="box1">
+		<ul>
+			<li>吃饭</li>
+			<li>睡觉</li>
+			<li>打豆豆</li>
+		</ul>
+	</div>
+
+	<div class="box2 h10"></div>
+
+	<div class="box3">
+		<ul>
+			<li>喝酒</li>
+			<li>唱歌</li>
+			<li>找妹子</li>
+		</ul>
+	</div>
+</body>
+</html>

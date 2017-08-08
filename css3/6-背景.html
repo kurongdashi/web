@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>背景</title>
+</head>
+<style>
+    /*1、背景图默认是padding-box 显示，就是将背景图片显示在包括padding在内的盒子区域
+      2、背景图定位 background-origin ，将背景图显示在那个区域内，如果图片过大该区域显示不下，
+      还可以搭配 3 或4 来调整
+      3、背景切割 background-clip ，只显示切割后部分的，多余的部分不显示
+      4、背景大小 background-size ，控制图片的伸缩来适应盒子的大小
+      如果只想显示背景图的一部分可以综合以上属性使用
+    */
+    .d{
+        float: left;
+        margin-right:100px;
+        width: 300px;
+        height: 400px;
+        padding:10px;
+        background-color: #f00;
+        border:10px dashed green;
+        background-image: url(images/green.jpg);
+        /*背景分割clip，控制背景颜色显示区域 border-box 就包涵边框， （默认）padding-box包涵padding ，content-box只包涵内容区域 */
+        background-clip: border-box;
+        /*background-clip: padding-box;*/
+        /*background-clip: content-box;*/
+        /*背景size，用来控制背景图片 cover 把图片按盒子的最大边缩放，把盒子盖住，contain图片按最小边缩放 可以用百分比 */
+        background-size:contain;
+        /*background-size:cover;*/
+        /* origin 用来定位背景图片是否显示在 边框 padding content*/
+        background-origin:border-box;
+        /*默认是padding-box 显示，就是将背景图片显示在包括padding在内的盒子区域*/
+        background-origin:padding-box;
+        background-origin:content-box;
+        background-repeat:no-repeat;
+    }
+    .d1{
+        float: left;
+        width:300px;
+        height:200px;
+        background-color: #f00;
+        background-image: url(images/green.jpg);
+        border:10px dashed green;
+        background-size:contain;
+        padding: 30px;
+        background-origin:border-box;
+        background-clip: padding-box;
+    }
+</style>
+<body>
+    <div class="d"></div>
+    <div class="d1"></div>
+</body>
+</html>

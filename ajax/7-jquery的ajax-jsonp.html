@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery的jsonp</title>
+</head>
+<body>
+<button id="btn">显示</button>
+
+</body>
+<script src="jquery-3.1.1.js"></script>
+<script>
+    function haha(data) {
+        console.log(data)
+    }
+//  使用ajax访问网络资源，就需要使用jsonp类型，并且访问成功后返回的必须是调用脚本，但是一般访问网络资源如果直接返回数据的话，就需要后头先把
+//    接收到的数据封装，然后发送到前端，此时前端不在使用jsonp 类型的ajax，直接访问本地的
+    $(function () {
+        $("#btn").on("click",function () {
+            $.ajax({
+                url:"http://localhost/jsonp.php",
+                async:"true",// 是否是异步的,默认为true
+                dataType:"jsonp",// 数据类型为jsonp,如果URL是网络路径则，数据类型一定为jsonp，否则报错
+                jsonp:"fn",//自定义传递给请求处理页面，用于获取jsonp的函数名的一个参数key值（默认为callback）
+                jsonpCallback:"haha",//自定义jsonp的函数名，默认为jquery112312312xxx
+                type:"post",
+//              type:"get",
+                data:{
+                    username:"zhangsan",
+                    age:20
+                },
+                success:function (data) {
+//                        ...
+                },
+                error:function (e) {
+                    console.log(e)
+                }
+            })
+        })
+    });
+</script>
+</html>
